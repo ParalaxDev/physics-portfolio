@@ -16,6 +16,8 @@ export default {
                 Runner = Matter.Runner,
                 Bodies = Matter.Bodies,
                 Composite = Matter.Composite,
+                Composites = Matter.Composites,
+                Common = Matter.Common,
                 MouseConstraint = Matter.MouseConstraint,
                 Mouse = Matter.Mouse
 
@@ -37,7 +39,11 @@ export default {
             // create two boxes and a ground
             var boxA = Bodies.rectangle(400, 200, 80, 80);
             var boxB = Bodies.rectangle(450, 50, 80, 80);
-            var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+            var stack = Composites.stack(window.innerWidth/4, 0, 10, 10, 1, 15, function(x, y) {
+                return Bodies.circle(x, y, Common.random(15, 30), { restitution: 0.6, friction: 0.1 });
+            }); 
+            var ground = Bodies.rectangle(window.innerWidth/2, window.innerHeight, window.innerWidth, 60, { isStatic: true });
+            
 
             var mouse = Mouse.create(this.render.canvas)
             var mouseConstraint = MouseConstraint.create(engine, {
@@ -51,7 +57,7 @@ export default {
             });
 
             // add all of the bodies to the world
-            Composite.add(engine.world, [boxA, boxB, ground]);
+            Composite.add(engine.world, [boxA, boxB, ground, stack]);
 
             Composite.add(engine.world, mouseConstraint);
 
