@@ -1,14 +1,16 @@
 <template>
-  <Header />
+  <SVGText text='Hello World' />
 </template>
 
 <script>
-import Header from './components/Header.vue'
+// import Header from './components/Header.vue'
+import SVGText from './components/SVGText.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    // Header, 
+    SVGText
   }
 }
 </script>
