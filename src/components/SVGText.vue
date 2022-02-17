@@ -3,7 +3,7 @@
 </template>
 <script>
 
-import font from '../assets/roboto-mono-700.svg'
+// import font from '../assets/roboto-mono-700.svg'
 
 export default {
     props: {
@@ -12,10 +12,27 @@ export default {
     methods: {
         init() {
 
-            const parser = new DOMParser()
-            const doc = parser.parseFromString(font, "image/svg+xml")
+            // var doc = null
 
-            console.log(doc)
+            fetch('assets/roboto-mono-700.svg')
+                .then(response => response.text())
+                .then((text) => {
+                    const nodes = parser.parseFromString(text, "image/svg+xml").documentElement.childNodes
+                    nodes.forEach(node => {
+                        if(node.attributes){
+
+                            const letter = node.attributes.item(0).nodeValue
+                            const path = node.attributes.item(1).nodeValue
+
+
+                            console.log(`${letter}: ${path}`)
+                        }
+                    });
+                })
+            const parser = new DOMParser()
+            
+            // console.log(font)
+            // console.log(doc)
         }
     },
     mounted() {
