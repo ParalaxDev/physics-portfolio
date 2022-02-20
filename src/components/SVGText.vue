@@ -27,7 +27,7 @@ export default {
                     var x = 0
 
                     const letters = this.text.split('')
-                    console.log(letters.length)
+                    // console.log(letters.length)
 
 
                     letters.forEach((letter) => {
@@ -66,7 +66,7 @@ export default {
                     svg.setAttribute('viewBox', `0 0 ${x * 1300} ${2200 * (y)}`)
                     svg.setAttribute('width', `${x * 40 * this.size}px`)
                     svg.setAttribute('height', `${250 * (y ) * this.size}px`)
-                    console.log(y)
+                    // console.log(y)
 
                     // console.log(letters)
 

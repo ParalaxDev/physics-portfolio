@@ -1,6 +1,6 @@
 <template>
 
-    <SVGText text='Frontend~DEveloper' size=3 />
+    <SVGText text='I am~Front end~DEveloper' size=3 />
 
     <div ref="physicsArea" id="physics-header"></div>
 </template>
@@ -52,13 +52,13 @@ export default {
                 
                 this.paths = this.title.querySelectorAll('path')
                 this.addLetters()
-                console.log(this.paths)
+                // console.log(this.paths)
             }, 1000)
 
             // const bounding = this.title.getBoundingClientRect()
 
 
-            var ground = Bodies.rectangle(550, window.innerHeight - 260, 1000, 5, { isStatic: true, render: { visible: false } });
+            var ground = Bodies.rectangle(550, window.innerHeight - 165, 1000, 5, { isStatic: true, render: { visible: false } });
 
             // var collider = Bodies.rectangle(window.innerWidth*10 / 2, window.innerHeight + 400, window.innerWidth*10, 100, {isStatic: true, isSensor: true} )
           
@@ -97,10 +97,10 @@ export default {
                     if(body.position.y > window.innerHeight + 200){
                         Composite.remove(this.engine.world, body)
                         // console.log('removed')
-                        console.log(this.engine.world.bodies.length)
+                        // console.log(this.engine.world.bodies.length)
                         if (this.engine.world.bodies.length <= 1){
                             this.addLetters()
-                            console.log('added letters')
+                            // console.log('added letters')
                         }
                     }
                 });
@@ -111,7 +111,7 @@ export default {
         addLetters () {
             this.paths.forEach(path => {
             // const letter = path.attributes.class.value.split('-')[1]
-            console.log(path)
+            // console.log(path)
             const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 4000 1000' xmlns='http://www.w3.org/2000/svg'  transform='translate(120, 20)' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style='transform-origin: center; fill: #B0413E'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
@@ -129,8 +129,8 @@ export default {
                 {
                     // isSleeping: true,
                     // restitution: this.getRandomNum(0, 0.25),
-                    frictionAir: this.getRandomNum(0, 0.006),
-                    // frictionAir: 0.006,
+                    // frictionAir: this.getRandomNum(0, 0.006),
+                    frictionAir: 0.006,
                     friction: 100,
                     collisionFilter: {
                         category: 0x0004
