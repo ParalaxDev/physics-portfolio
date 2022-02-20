@@ -1,6 +1,6 @@
 <template>
     <h1>{{ text }}</h1>
-    <svg width="1000px" height="100px" viewBox="0 0 10000 2000" xmlns="http://www.w3.org/2000/svg" class="svg-area">
+    <svg width="1000px" height="100px" viewBox="0 0 13000 2000" xmlns="http://www.w3.org/2000/svg" class="svg-area">
 
     </svg>
 </template>
@@ -10,7 +10,8 @@
 
 export default {
     props: {
-        text: String
+        text: String,
+        size: Number,
     },
     methods: {
         init() {
@@ -24,6 +25,11 @@ export default {
                     const svg = document.getElementsByTagName('svg')[0]
 
                     const letters = this.text.split('')
+                    console.log(letters.length)
+
+                    svg.setAttribute('viewBox', `0 0 ${letters.length * 1150} 2000`)
+                    svg.setAttribute('width', `${letters.length * 40 * this.size}px`)
+                    svg.setAttribute('height', `${100 * this.size}px`)
 
                     letters.forEach((letter, i) => {
                         nodes.forEach(node => {
@@ -34,7 +40,7 @@ export default {
 
                                 if (nodeLetter == letter.toUpperCase()){
 
-                                    console.log(`${nodeLetter}: ${nodePath}`)
+                                    // console.log(`${nodeLetter}: ${nodePath}`)
                                     // const svg = document.createElement(svg)
                                     var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path')
                                     newElement.setAttribute("d", nodePath); //Set path's data

@@ -1,5 +1,5 @@
 <template>
-  <SVGText text='Hello World' />
+  <SVGText text='Hello World' size='2' />
 </template>
 
 <script>
