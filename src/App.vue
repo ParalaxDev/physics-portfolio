@@ -6,6 +6,7 @@
             <a href='https://github.com/paralaxdev'>Github</a>
             <a href='https://dsc.bio/paralax'>Discord</a>
         </ul>
+        <a><img :src='themeSwitcher' /></a>
     </div>
     <Header />
 
@@ -13,6 +14,7 @@
 
 <script>
 import Header from './components/Header.vue'
+// import img from '../assets/theme-switcher.svg'
 // import SVGText from './components/SVGText.vue'
 
 export default {
@@ -21,6 +23,11 @@ export default {
     Header, 
     // SVGText
   },
+  data(){
+    return {
+      themeSwitcher: require('./assets/theme-switcher.svg')
+    }
+  }
 }
 </script>
 
