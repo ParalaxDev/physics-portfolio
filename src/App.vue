@@ -1,17 +1,18 @@
 <template>
-  <SVGText text='Computer Science~+ Graphics Student' size='2' />
+  <!-- <SVGText text='Computer Science~+ Graphics Student' size='2' /> -->
+  <Header />
   <!-- <SVGText text='' size='2' /> -->
 </template>
 
 <script>
-// import Header from './components/Header.vue'
-import SVGText from './components/SVGText.vue'
+import Header from './components/Header.vue'
+// import SVGText from './components/SVGText.vue'
 
 export default {
   name: 'App',
   components: {
-    // Header, 
-    SVGText
+    Header, 
+    // SVGText
   }
 }
 </script>

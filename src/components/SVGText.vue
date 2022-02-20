@@ -1,6 +1,6 @@
 <template>
-    <h1>{{ text }}</h1>
-    <svg width="1000px" height="100px" viewBox="0 0 13000 2000" xmlns="http://www.w3.org/2000/svg" class="svg-area">
+    <!-- <h1>{{ text }}</h1> -->
+    <svg width="1000px" height="100px" viewBox="0 0 13000 2000" xmlns="http://www.w3.org/2000/svg" class="title">
 
     </svg>
 </template>

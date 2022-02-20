@@ -1,20 +1,21 @@
 <template>
-    <svg width="100px" height="100px" viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg" >
-            <path d='M624 934L369 1456H41L450 734L30 0H362L628 530L895 0H1223L803 734L1213 1456H883L624 934Z' />
-    </svg>
 
+    <SVGText text='Computer Science~+ Graphics Student' size=2 />
 
-    <!-- <div ref="physicsArea" id="physics-header"></div> -->
+    <div ref="physicsArea" id="physics-header"></div>
 </template>
 
 <script>
-
+import SVGText from './SVGText.vue'
 import Matter from 'matter-js'
 
 // this.render = require('../render')
 
 export default {
     name: 'Header',
+    components: {
+        SVGText
+    },
     methods: {
         init: function() {
             // module aliases
@@ -41,7 +42,12 @@ export default {
                 }
             });
             this.title = document.querySelector('.title')   
-            this.paths = this.title.querySelectorAll('path')
+            setTimeout(() => {
+                
+                this.paths = this.title.querySelectorAll('path')
+                this.addLetters()
+                console.log(this.paths)
+            }, 1000)
 
             var ground = Bodies.rectangle(window.innerWidth/2, window.innerHeight, window.innerWidth, 60, { isStatic: true });
             
@@ -55,7 +61,6 @@ export default {
                     }
                 }
             });
-            this.addLetters()
 
             // console.log(this.engine.world)
 
@@ -79,7 +84,8 @@ export default {
         addLetters () {
             this.paths.forEach(path => {
             // const letter = path.attributes.class.value.split('-')[1]
-            console.log(this.convertToURI(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2096 74" width="30" height="30" /><path d="${path.attributes.d.value}/></svg>`))
+            console.log(path)
+            const svgURI = this.convertToURI(`<svg width='100px' height='100px' viewBox='0 0 13000 2000' xmlns='http://www.w3.org/2000/svg'><path d='${path.attributes.d.value}' transform='scale (1, -1)'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E
@@ -93,13 +99,17 @@ export default {
                 bounding.width,
                 bounding.height,
                 {
-                    // isSleeping: true,
+                    isSleeping: true,
                     collisionFilter: {
                         category: 0x0004
                     },
                     render: {
                         sprite: {
-                            // texture: [add uri here]
+                            // texture: "data:image/svg+xml,%3Csvg width='1000px' height='100px' viewBox='0 0 13000 2000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1142 456H861Q857 390 839 343T790 266Q759 236 715 222T616 208Q575 208 542 217T481 247Q456 265 437 292T403 354Q383 405 374 473T364 629V827Q364 891 370 946T389 1048Q406 1107 434 1151T504 1220Q528 1234 556 1241T618 1248Q680 1248 724 1232T799 1183Q828 1150 843 1101T863 987H1143Q1133 1101 1095 1192T991 1346Q925 1409 832 1443T618 1477Q537 1477 467 1457T337 1398Q271 1353 219 1288T135 1140Q107 1072 93 993T79 825V629Q79 535 94 451T139 297Q169 227 212 169T312 70Q373 26 449 3T616 -21Q730 -21 824 12T986 108Q1054 170 1094 258T1142 456Z' style='transform-origin: center;' transform='translate(1100, 0), scale (1, -1)'%3E%3C/path%3E%3C/svg%3E"
+                            // texture: 'data:image/svg+xml,%3Csvg width="1000px" height="100px" viewBox="0 0 13000 2000" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1142 456H861Q857 390 839 343T790 266Q759 236 715 222T616 208Q575 208 542 217T481 247Q456 265 437 292T403 354Q383 405 374 473T364 629V827Q364 891 370 946T389 1048Q406 1107 434 1151T504 1220Q528 1234 556 1241T618 1248Q680 1248 724 1232T799 1183Q828 1150 843 1101T863 987H1143Q1133 1101 1095 1192T991 1346Q925 1409 832 1443T618 1477Q537 1477 467 1457T337 1398Q271 1353 219 1288T135 1140Q107 1072 93 993T79 825V629Q79 535 94 451T139 297Q169 227 212 169T312 70Q373 26 449 3T616 -21Q730 -21 824 12T986 108Q1054 170 1094 258T1142 456Z" style="transform-origin: center;" transform="translate(1100, 0), scale (1, -1)"%3E%3C/path%3E%3C/svg%3E'
+                            // texture: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2096 74" width="30" height="30" /%3E%3Cpath d="M1201 1227V1456H27V1227H470V0H752V1227H1201Z/%3E%3C/svg%3E'
+                            // texture: "data:image/svg+xml,%3csvg width='1000px' height='100px' viewBox='0 0 13000 2000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1142 456H861Q857 390 839 343T790 266Q759 236 715 222T616 208Q575 208 542 217T481 247Q456 265 437 292T403 354Q383 405 374 473T364 629V827Q364 891 370 946T389 1048Q406 1107 434 1151T504 1220Q528 1234 556 1241T618 1248Q680 1248 724 1232T799 1183Q828 1150 843 1101T863 987H1143Q1133 1101 1095 1192T991 1346Q925 1409 832 1443T618 1477Q537 1477 467 1457T337 1398Q271 1353 219 1288T135 1140Q107 1072 93 993T79 825V629Q79 535 94 451T139 297Q169 227 212 169T312 70Q373 26 449 3T616 -21Q730 -21 824 12T986 108Q1054 170 1094 258T1142 456Z' style='transform-origin: center;' transform='translate(1100, 0), scale (1, -1)'%3e%3c/path%3e%3c/svg%3e"
+                            texture: svgURI
                         }   
                     }
                 }
@@ -116,36 +126,21 @@ export default {
             this.render.options.width =  window.innerWidth
             this.render.options.height = window.innerHeight
         },
-        convertToURI: function (raw) {
+        convertToURI: function (data) {
 
-            var encoded = raw.replace(/\s+/g, " ")
+            const symbols = /[\r\n%#()<>?[\\\]^`{|}]/g;
+            data = data.replace(/'/g, `"`);
 
-            encoded = this.replaceAll(encoded, "%", "%25"); 
-            encoded = this.replaceAll(encoded, "> <", "><"); // normalise spaces elements
-            encoded = this.replaceAll(encoded, "; }", ";}"); // normalise spaces css
-            encoded = this.replaceAll(encoded, "<", "%3c");
-            encoded = this.replaceAll(encoded, ">", "%3e");
-            encoded = this.replaceAll(encoded, "\"", "'");
-            encoded = this.replaceAll(encoded, "#", "%23"); // needed for ie and firefox
-            encoded = this.replaceAll(encoded, "{", "%7b");
-            encoded = this.replaceAll(encoded, "}", "%7d");     
-            encoded = this.replaceAll(encoded, "|", "%7c");
-            encoded = this.replaceAll(encoded, "^", "%5e");
-            encoded = this.replaceAll(encoded, "`", "%60"); 
-            encoded = this.replaceAll(encoded, "@", "%40"); 
 
-            // charset reportedly not needed ... I need to test before implementing
-            var uri = 'data:image/svg+xml;charset=UTF-8,' + encoded;
-            return uri
+            data = data.replace(/>\s{1,}</g, `><`);
+            data = data.replace(/\s{2,}/g, ` `);
+
+            // Using encodeURIComponent() as replacement function
+            // allows to keep result code readable
+            return 'data:image/svg+xml,' + data.replace(symbols, encodeURIComponent);
+            
         },
 
-
-        escapeRegExp: function(string) {
-            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-        },
-        replaceAll: function(str, match, replacement){
-            return str.replace(new RegExp(this.escapeRegExp(match), 'g'), ()=>replacement);
-        },
     },
 
 
