@@ -22,7 +22,7 @@ export default {
 * {
     padding: 0;
     margin: 0;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 </style>

@@ -48,10 +48,11 @@ export default {
                                     // const svg = document.createElement(svg)
                                     var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path')
                                     newElement.setAttribute("d", nodePath); //Set path's data
-                                    newElement.setAttribute("style", `transform-origin: center;`)
+                                    newElement.setAttribute("style", `transform-origin: center; fill: red`)
+                                    // newElement.setAttribute("fill", "red")
                                     // var transformAttr = ' translateX("' + 100 * i + 'px")';
                                     // var transformAttr = 'translateX("100px")';
-                                    newElement.setAttribute('transform', 'translate(' + 1100*x + ', ' + 2200 * y + '), scale (1, -1)');
+                                    newElement.setAttribute('transform', 'translate(' + 1200*x + ', ' + 2200 * y + '), scale (1, -1)');
                                     // newElement.style.stroke = "#000"; //Set stroke colour
                                     // newElement.style.strokeWidth = "5px"; //Set stroke width
                                     svg.appendChild(newElement);
@@ -62,7 +63,7 @@ export default {
                         
                     });
 
-                    svg.setAttribute('viewBox', `0 0 ${x * 1200} ${2200 * (y)}`)
+                    svg.setAttribute('viewBox', `0 0 ${x * 1300} ${2200 * (y)}`)
                     svg.setAttribute('width', `${x * 40 * this.size}px`)
                     svg.setAttribute('height', `${250 * (y ) * this.size}px`)
                     console.log(y)
