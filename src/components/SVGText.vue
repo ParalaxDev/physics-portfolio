@@ -62,9 +62,9 @@ export default {
                         
                     });
 
-                    svg.setAttribute('viewBox', `0 0 ${letters.length * 1150} ${2200 * (y )}`)
-                    svg.setAttribute('width', `${letters.length * 40 * this.size}px`)
-                    svg.setAttribute('height', `${220 * (y + 1) * this.size}px`)
+                    svg.setAttribute('viewBox', `0 0 ${x * 1200} ${2200 * (y)}`)
+                    svg.setAttribute('width', `${x * 40 * this.size}px`)
+                    svg.setAttribute('height', `${250 * (y ) * this.size}px`)
                     console.log(y)
 
                     // console.log(letters)
