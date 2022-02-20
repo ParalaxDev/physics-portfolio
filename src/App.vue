@@ -1,6 +1,12 @@
 <template>
 
     <div class="noise" />
+    <div class="navbar" >
+        <ul>
+            <a href='https://github.com/paralaxdev'>Github</a>
+            <a href='https://github.com/paralaxdev'>Discord</a>
+        </ul>
+    </div>
     <Header />
 
 </template>
@@ -19,11 +25,13 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
 * {
     padding: 0;
     margin: 0;
     overflow: hidden;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .noise {
@@ -41,6 +49,36 @@ export default {
     animation:noise .6s steps(1) infinite;
     background-size:250px 250px;
     will-change:transform
+}
+
+.navbar {
+    z-index: 1000;
+    position: absolute;
+    animation: 1s cubic-bezier(.77,0,.175,1) 3s nav forwards;
+
+    bottom: -100px;
+    left: 75px;
+}
+
+.navbar ul a{
+    margin-right: 40px;
+    font-size: 1.25rem;
+    color: #B0413E;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    /* transition: 0.5s; */
+}
+
+
+@keyframes nav {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+    } 100% {
+        bottom: 75px;
+        opacity: 1;
+    }
 }
 
 @keyframes noise {

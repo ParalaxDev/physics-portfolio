@@ -1,6 +1,6 @@
 <template>
 
-    <SVGText text='I am~Front end~DEveloper' size=3 />
+    <SVGText text='Im a~Front end~DEveloper' size=3 />
 
     <div ref="physicsArea" id="physics-header"></div>
 </template>
@@ -58,7 +58,7 @@ export default {
             // const bounding = this.title.getBoundingClientRect()
 
 
-            var ground = Bodies.rectangle(550, window.innerHeight - 165, 1000, 5, { isStatic: true, render: { visible: false } });
+            var ground = Bodies.rectangle(550, window.innerHeight - 180 , 1000, 5, { isStatic: true, render: { visible: false } });
 
             // var collider = Bodies.rectangle(window.innerWidth*10 / 2, window.innerHeight + 400, window.innerWidth*10, 100, {isStatic: true, isSensor: true} )
           
