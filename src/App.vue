@@ -4,7 +4,7 @@
     <div class="navbar" >
         <ul>
             <a href='https://github.com/paralaxdev'>Github</a>
-            <a href='https://github.com/paralaxdev'>Discord</a>
+            <a href='https://dsc.bio/paralax'>Discord</a>
         </ul>
     </div>
     <Header />
@@ -32,6 +32,7 @@ export default {
     margin: 0;
     overflow: hidden;
     font-family: 'Roboto Mono', monospace;
+    background: #D3D0CB;
 }
 
 .noise {
@@ -52,7 +53,7 @@ export default {
 }
 
 .navbar {
-    z-index: 1000;
+    z-index: 1;
     position: absolute;
     animation: 1s cubic-bezier(.77,0,.175,1) 3s nav forwards;
 
@@ -63,13 +64,21 @@ export default {
 .navbar ul a{
     margin-right: 40px;
     font-size: 1.25rem;
-    color: #B0413E;
+    color: #3A3042;
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
-    /* transition: 0.5s; */
+    text-underline-offset: 5px;
+    height: 40px;
+    display: inline-block;
+    /* text-underline-position: under; */
+    transition: 0.25s;
 }
 
+.navbar ul a:hover {
+
+    text-underline-offset: 7.5px;
+    /* text-decoration-thickness: 3px;  */
+}
 
 @keyframes nav {
     0% {

@@ -112,7 +112,7 @@ export default {
             this.paths.forEach(path => {
             // const letter = path.attributes.class.value.split('-')[1]
             // console.log(path)
-            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 4000 1000' xmlns='http://www.w3.org/2000/svg'  transform='translate(120, 20)' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style='transform-origin: center; fill: #B0413E'></path></svg>`)
+            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 4000 1000' xmlns='http://www.w3.org/2000/svg'  transform='translate(120, 20)' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style='transform-origin: center; fill: #393E41'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E
@@ -206,9 +206,9 @@ export default {
 #physics-header {
     position: absolute;
     /* box-sizing: border-box; */
-    outline: 15px solid #B0413E;
+    outline: 30px solid #393E41;
     /* outline-offset: -15px; */
-    animation: 1s cubic-bezier(.77,0,.175,1) 1.5s borderAnimate forwards;
+    animation: 1.5s cubic-bezier(.77,0,.175,1) 1.75s borderAnimate forwards;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
