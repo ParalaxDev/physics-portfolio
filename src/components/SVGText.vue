@@ -23,18 +23,22 @@ export default {
                 .then((text) => {
                     const nodes = parser.parseFromString(text, "image/svg+xml").documentElement.childNodes
                     const svg = document.getElementsByTagName('svg')[0]
+                    var y = 0
+                    var x = 0
 
                     const letters = this.text.split('')
                     console.log(letters.length)
 
-                    svg.setAttribute('viewBox', `0 0 ${letters.length * 1150} 2000`)
-                    svg.setAttribute('width', `${letters.length * 40 * this.size}px`)
-                    svg.setAttribute('height', `${100 * this.size}px`)
 
-                    letters.forEach((letter, i) => {
+                    letters.forEach((letter) => {
+                        x += 1
+                        if (letter == '~'){
+                            y += 1
+                            x = 0
+                        }
                         nodes.forEach(node => {
                             if(node.attributes){
-    
+                                
                                 const nodeLetter = node.attributes.item(0).nodeValue
                                 const nodePath = node.attributes.item(1).nodeValue
 
@@ -47,7 +51,7 @@ export default {
                                     newElement.setAttribute("style", `transform-origin: center;`)
                                     // var transformAttr = ' translateX("' + 100 * i + 'px")';
                                     // var transformAttr = 'translateX("100px")';
-                                    newElement.setAttribute('transform', 'translate(' + 1100*i + ', 0), scale (1, -1)');
+                                    newElement.setAttribute('transform', 'translate(' + 1100*x + ', ' + 2200 * y + '), scale (1, -1)');
                                     // newElement.style.stroke = "#000"; //Set stroke colour
                                     // newElement.style.strokeWidth = "5px"; //Set stroke width
                                     svg.appendChild(newElement);
@@ -58,6 +62,10 @@ export default {
                         
                     });
 
+                    svg.setAttribute('viewBox', `0 0 ${letters.length * 1150} ${2200 * (y )}`)
+                    svg.setAttribute('width', `${letters.length * 40 * this.size}px`)
+                    svg.setAttribute('height', `${220 * (y + 1) * this.size}px`)
+                    console.log(y)
 
                     // console.log(letters)
 

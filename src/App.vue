@@ -1,5 +1,6 @@
 <template>
-  <SVGText text='Hello World' size='2' />
+  <SVGText text='Computer Science~+ Graphics Student' size='2' />
+  <!-- <SVGText text='' size='2' /> -->
 </template>
 
 <script>
