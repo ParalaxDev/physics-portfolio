@@ -1,6 +1,6 @@
 <template>
     <h1>{{ text }}</h1>
-    <svg width="100px" height="100px" viewBox="0 0 4000 2000" xmlns="http://www.w3.org/2000/svg" class="svg-area">
+    <svg width="1000px" height="100px" viewBox="0 0 10000 2000" xmlns="http://www.w3.org/2000/svg" class="svg-area">
 
     </svg>
 </template>
@@ -38,9 +38,10 @@ export default {
                                     // const svg = document.createElement(svg)
                                     var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path')
                                     newElement.setAttribute("d", nodePath); //Set path's data
-                                    newElement.setAttribute("style", `x: ${100 * i}px`)
-                                    var transformAttr = ' translateX(' + 100 * i + ')';
-                                    newElement.setAttribute('transform', transformAttr);
+                                    newElement.setAttribute("style", `transform-origin: center;`)
+                                    // var transformAttr = ' translateX("' + 100 * i + 'px")';
+                                    // var transformAttr = 'translateX("100px")';
+                                    newElement.setAttribute('transform', 'translate(' + 1100*i + ', 0), scale (1, -1)');
                                     // newElement.style.stroke = "#000"; //Set stroke colour
                                     // newElement.style.strokeWidth = "5px"; //Set stroke width
                                     svg.appendChild(newElement);
