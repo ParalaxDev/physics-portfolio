@@ -1,6 +1,6 @@
 <template>
 
-    <SVGText text='Front-end~DEveloper' size=3 />
+    <SVGText text='Frontend~DEveloper' size=3 />
 
     <div ref="physicsArea" id="physics-header"></div>
 </template>
@@ -27,7 +27,10 @@ export default {
                 // Composites = Matter.Composites,
                 // Common = Matter.Common,
                 MouseConstraint = Matter.MouseConstraint,
-                Mouse = Matter.Mouse
+                Mouse = Matter.Mouse,
+                Events = Matter.Events
+                // World = Matter.World
+                // Detector = Matter.Detector
 
             this.engine = Engine.create();
 
@@ -35,8 +38,8 @@ export default {
                 element: this.$refs.physicsArea,
                 engine: this.engine,
                 options: {
-                    width: window.innerWidth - 30,
-                    height: window.innerHeight - 30,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
@@ -56,7 +59,10 @@ export default {
 
 
             var ground = Bodies.rectangle(550, window.innerHeight - 260, 1000, 5, { isStatic: true, render: { visible: false } });
-            // var ground2 = Bodies.rectangle(window.innerWidth/2, window.innerHeight - 330, 200, 5, { isStatic: true });
+
+            // var collider = Bodies.rectangle(window.innerWidth*10 / 2, window.innerHeight + 400, window.innerWidth*10, 100, {isStatic: true, isSensor: true} )
+          
+            
             
             var mouse = Mouse.create(this.render.canvas)
             var mouseConstraint = MouseConstraint.create(this.engine, {
@@ -85,6 +91,20 @@ export default {
 
             // run the engine
             Runner.run(runner, this.engine);
+
+            Events.on(runner, "beforeUpdate", () => {
+                this.engine.world.bodies.forEach(body => {
+                    if(body.position.y > window.innerHeight + 200){
+                        Composite.remove(this.engine.world, body)
+                        // console.log('removed')
+                        console.log(this.engine.world.bodies.length)
+                        if (this.engine.world.bodies.length <= 1){
+                            this.addLetters()
+                            console.log('added letters')
+                        }
+                    }
+                });
+            })
             
         },
 
@@ -185,11 +205,13 @@ export default {
 
 #physics-header {
     position: absolute;
-}
-
-* {
-    background-color: #FCAA67;
-    border: 15px solid #B0413E;
+    /* box-sizing: border-box; */
+    outline: 15px solid #B0413E;
+    /* outline-offset: -15px; */
+    animation: 1s cubic-bezier(.77,0,.175,1) 1.5s borderAnimate forwards;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .title {
@@ -202,8 +224,16 @@ export default {
   
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-5%, -75%, 0);
+  transform: translate3d(-5%, -100%, 0);
   z-index: 2;
+}
+
+@keyframes borderAnimate {
+    0% {
+        outline-offset: 0px;
+    } 100% {
+        outline-offset: -15px;
+    }
 }
 
 </style>
