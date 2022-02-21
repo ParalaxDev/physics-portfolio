@@ -162,7 +162,7 @@ export default {
                 bounding.height,
                 {
                     // isSleeping: true,
-                    // restitution: this.getRandomNum(0, 0.25),
+                    // restitution: 0.1,
                     // frictionAir: this.getRandomNum(0, 0.006),
                     frictionAir: 0.006,
                     friction: 100,
@@ -255,7 +255,7 @@ export default {
     /* box-sizing: border-box; */
     outline: 30px solid var(--primary-color);
     /* outline-offset: -15px; */
-    animation: 1.5s cubic-bezier(.77,0,.175,1) 1.75s borderAnimate forwards;
+    animation: 0.5s ease-out 3s borderAnimate forwards;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

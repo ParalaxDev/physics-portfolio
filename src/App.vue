@@ -147,7 +147,7 @@ body {
     font-size: 1.25rem;
 
     text-decoration-style: dotted;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 2.5px;
     text-underline-offset: 40px;
     height: 50px;
     display: inline-block;
