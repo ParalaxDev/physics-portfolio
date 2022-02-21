@@ -16,9 +16,37 @@ export default {
     components: {
         SVGText
     },
+    data() {
+        return {
+            groundID: 1
+        }
+    },
     props: {
         primary: String,
         secondary: String
+    },
+    watch: { 
+        primary: function() {
+            for (let i = 0; i < 5; i++) {
+                
+                this.engine.world.bodies.forEach(body => {
+                    if (!body.isStatic){
+    
+                        Matter.Composite.remove(this.engine.world, body)
+                    }
+    
+                    
+                    console.log(body.id)
+                });
+                
+            }
+            // var ground = Matter.Bodies.rectangle(550, window.innerHeight - 180 , 1000, 5, { isStatic: true, render: { visible: false } });
+            // Matter.Composite.add(this.engine.world, [ground]);
+
+
+
+            this.addLetters()
+        }
     },
     methods: {
         init: function() {
@@ -63,6 +91,8 @@ export default {
 
 
             var ground = Bodies.rectangle(550, window.innerHeight - 180 , 1000, 5, { isStatic: true, render: { visible: false } });
+            this.groundID = ground.id
+            // console.log(ground.id)
 
             // var collider = Bodies.rectangle(window.innerWidth*10 / 2, window.innerHeight + 400, window.innerWidth*10, 100, {isStatic: true, isSensor: true} )
           
@@ -116,7 +146,7 @@ export default {
             this.paths.forEach(path => {
             // const letter = path.attributes.class.value.split('-')[1]
             // console.log(path)
-            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 4000 1000' xmlns='http://www.w3.org/2000/svg'  transform='translate(120, 20)' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style='transform-origin: center; fill: #393E41'></path></svg>`)
+            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 4000 1000' xmlns='http://www.w3.org/2000/svg'  transform='translate(120, 20)' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style='transform-origin: center; fill: ${this.primary}'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E

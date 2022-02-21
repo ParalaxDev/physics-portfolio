@@ -8,12 +8,13 @@
         </ul>
         <a class='theme-switcher' v-on:click="themeSwitch()"><img :src='themeSwitcher'/></a>
     </div>
-    <Header />
+    <Header :primary='PRIMARY' :secondary="SECONDARY"/>
 
 </template>
 
 <script>
 import Header from './components/Header.vue'
+
 // import img from '../assets/theme-switcher.svg'
 // import SVGText from './components/SVGText.vue'
 
@@ -25,24 +26,41 @@ export default {
   },
   data(){
     return {
-      themeSwitcher: require('./assets/theme-switcher.svg')
+      themeSwitcher: require('./assets/theme-switcher.svg'),
+      PRIMARY: '#393E41',
+      SECONDARY: '#D3D0CB'
     }
   },
   methods: {
       themeSwitch(){
-          const root = document.querySelector(':root')
-          const rootCompStyled = getComputedStyle(root)
-          console.log(rootCompStyled.getPropertyValue('--primary-color'))
-        if (rootCompStyled.getPropertyValue('--primary-color') == '#393E41'){
-            root.style.setProperty('--primary-color', '#D3D0CB')
-            root.style.setProperty('--secondary-color', '#393E41')
-        } else {
-            root.style.setProperty('--primary-color', '#393E41')
-            root.style.setProperty('--secondary-color', '#D3D0CB')
+        const root = document.querySelector(':root')
+        const rootCompStyled = getComputedStyle(root)
+        console.log(rootCompStyled.getPropertyValue('--primary-color'))
 
+        if (rootCompStyled.getPropertyValue('--primary-color') == '#393E41'){
+            this.PRIMARY = '#D3D0CB'
+            this.SECONDARY = '#393E41'
+        } else {
+            this.PRIMARY = '#393E41'
+            this.SECONDARY = '#D3D0CB'
         }
 
+        root.style.setProperty('--primary-color', this.PRIMARY)
+        root.style.setProperty('--secondary-color', this.SECONDARY)
+
       }
+  },
+  beforeMount() {
+    this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (this.prefersDarkScheme){
+        this.SECONDARY = '#393E41'
+        this.PRIMARY = '#D3D0CB'
+    } else {
+        this.PRIMARY = '#393E41'
+        this.SECONDARY = '#D3D0CB'
+
+    }
+
   }
 }
 </script>
@@ -51,8 +69,16 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
 :root {
-  --secondary-color: #D3D0CB;
-  --primary-color: #393E41;
+      --secondary-color: #D3D0CB;
+      --primary-color: #393E41;
+}
+
+@media (prefers-color-scheme: dark){
+    :root {
+      --primary-color: #D3D0CB;
+      --secondary-color: #393E41;
+    }
+
 }
 
 
