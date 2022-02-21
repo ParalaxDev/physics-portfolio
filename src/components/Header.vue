@@ -16,6 +16,10 @@ export default {
     components: {
         SVGText
     },
+    props: {
+        primary: String,
+        secondary: String
+    },
     methods: {
         init: function() {
             // module aliases

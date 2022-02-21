@@ -6,7 +6,7 @@
             <a href='https://github.com/paralaxdev'>Github</a>
             <a href='https://dsc.bio/paralax'>Discord</a>
         </ul>
-        <a class='theme-switcher'><img :src='themeSwitcher'  /></a>
+        <a class='theme-switcher' v-on:click="themeSwitch()"><img :src='themeSwitcher'/></a>
     </div>
     <Header />
 
@@ -27,6 +27,22 @@ export default {
     return {
       themeSwitcher: require('./assets/theme-switcher.svg')
     }
+  },
+  methods: {
+      themeSwitch(){
+          const root = document.querySelector(':root')
+          const rootCompStyled = getComputedStyle(root)
+          console.log(rootCompStyled.getPropertyValue('--primary-color'))
+        if (rootCompStyled.getPropertyValue('--primary-color') == '#393E41'){
+            root.style.setProperty('--primary-color', '#D3D0CB')
+            root.style.setProperty('--secondary-color', '#393E41')
+        } else {
+            root.style.setProperty('--primary-color', '#393E41')
+            root.style.setProperty('--secondary-color', '#D3D0CB')
+
+        }
+
+      }
   }
 }
 </script>
@@ -34,17 +50,24 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
+:root {
+  --secondary-color: #D3D0CB;
+  --primary-color: #393E41;
+}
+
+
 * {
     padding: 0;
     margin: 0;
     overflow: hidden;
     font-family: 'Roboto Mono', monospace;
     /* background: #D3D0CB; */
+    color: var(--primary-color);
 }
 
 body {
     
-    background: #D3D0CB;
+    background: var(--secondary-color);
 }
 
 .noise {
@@ -86,7 +109,7 @@ body {
 .navbar ul a{
     margin-right: 40px;
     font-size: 1.25rem;
-    color: #3A3042;
+
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
     text-underline-offset: 5px;
