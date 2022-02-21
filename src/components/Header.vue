@@ -36,7 +36,7 @@ export default {
                     }
     
                     
-                    console.log(body.id)
+                    // console.log(body.id)
                 });
                 
             }
@@ -192,8 +192,8 @@ export default {
 
     
         windowResizeHandler: function () {
-            this.render.options.width =  window.innerWidth
-            this.render.options.height = window.innerHeight
+            this.render.canvas.width =  window.innerWidth
+            this.render.canvas.height = window.innerHeight
         },
         convertToURI: function (data) {
 

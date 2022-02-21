@@ -45,7 +45,7 @@ export default {
       themeSwitch(){
         const root = document.querySelector(':root')
         const rootCompStyled = getComputedStyle(root)
-        console.log(rootCompStyled.getPropertyValue('--primary-color'))
+        // console.log(rootCompStyled.getPropertyValue('--primary-color'))
 
         if (rootCompStyled.getPropertyValue('--primary-color') == '#393E41'){
             this.PRIMARY = '#D3D0CB'
@@ -148,11 +148,11 @@ body {
 
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
-    text-underline-offset: 5px;
-    height: 40px;
+    text-underline-offset: 40px;
+    height: 50px;
     display: inline-block;
     /* text-underline-position: under; */
-    transition: 0.25s;
+    transition: 0.25s ;
 }
 
 .navbar ul a:hover {
@@ -167,6 +167,15 @@ body {
 
 .theme-switcher:hover {
     cursor: pointer;
+}
+
+.theme-switcher svg {
+    transition: 0.5s cubic-bezier(.77,0,.175,1);
+}
+
+.theme-switcher svg:hover {
+    transform: rotate(180deg);
+
 }
 
 @keyframes nav {
