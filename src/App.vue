@@ -6,7 +6,7 @@
             <a href='https://github.com/paralaxdev'>Github</a>
             <a href='https://dsc.bio/paralax'>Discord</a>
         </ul>
-        <a><img :src='themeSwitcher' /></a>
+        <a class='theme-switcher'><img :src='themeSwitcher'  /></a>
     </div>
     <Header />
 
@@ -39,11 +39,16 @@ export default {
     margin: 0;
     overflow: hidden;
     font-family: 'Roboto Mono', monospace;
+    /* background: #D3D0CB; */
+}
+
+body {
+    
     background: #D3D0CB;
 }
 
 .noise {
-    background-image: url('/assets/noise.svg');
+    /* background-image: url('/assets/noise.svg'); */
     background-repeat: repeat;  
     display:block;
     position:fixed;
@@ -60,12 +65,22 @@ export default {
 }
 
 .navbar {
+    background-color: transparent;
     z-index: 1;
     position: absolute;
     animation: 1s cubic-bezier(.77,0,.175,1) 3s nav forwards;
+    /* width: 800px; */
+    width: 100%;
+    /* padding: 0px 75px; */
+    display: flex;
 
     bottom: -100px;
-    left: 75px;
+    /* left: 75px; */
+}
+
+.navbar ul{
+    padding: 0px 75px;
+    flex-grow: 1;
 }
 
 .navbar ul a{
@@ -85,6 +100,20 @@ export default {
 
     text-underline-offset: 7.5px;
     /* text-decoration-thickness: 3px;  */
+}
+
+.theme-switcher {
+    padding: 0px 75px;
+}
+
+.theme-switcher:hover {
+    cursor: pointer;
+}
+
+.theme-switcher img {
+    width: 32px;
+    pointer-events: none;
+    user-select: none;
 }
 
 @keyframes nav {
