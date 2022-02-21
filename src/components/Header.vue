@@ -237,10 +237,23 @@ export default {
 
 <style scoped>
 
+:root {
+      --secondary-color: #D3D0CB;
+      --primary-color: #393E41;
+}
+
+@media (prefers-color-scheme: dark){
+    :root {
+      --primary-color: #D3D0CB;
+      --secondary-color: #393E41;
+    }
+
+}
+
 #physics-header {
     position: absolute;
     /* box-sizing: border-box; */
-    outline: 30px solid #393E41;
+    outline: 30px solid var(--primary-color);
     /* outline-offset: -15px; */
     animation: 1.5s cubic-bezier(.77,0,.175,1) 1.75s borderAnimate forwards;
     top: 50%;
