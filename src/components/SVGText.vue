@@ -24,7 +24,8 @@ export default {
                 .then(response => response.text())
                 .then((text) => {
                     const nodes = parser.parseFromString(text, "image/svg+xml").documentElement.childNodes
-                    const svg = document.getElementsByTagName('svg')[0]
+                    // const svg = document.getElementsByTagName('svg')[0]
+                    const svg = document.querySelector('.title')  
                     var y = 0
                     var x = 0
 

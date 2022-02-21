@@ -3,10 +3,20 @@
     <div class="noise" />
     <div class="navbar" >
         <ul>
-            <a href='https://github.com/paralaxdev'>Github</a>
-            <a href='https://dsc.bio/paralax'>Discord</a>
+            <a class='socials' href='https://github.com/paralaxdev'>Github</a>
+            <a class='socials' href='https://dsc.bio/paralax'>Discord</a>
         </ul>
-        <a class='theme-switcher' v-on:click="themeSwitch()"><img :src='themeSwitcher'/></a>
+        <a class='theme-switcher' v-on:click="themeSwitch()">
+            <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0V64Z" :fill="PRIMARY"/>
+                <mask id="mask0_2_13" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="32" y="0" width="32" height="64">
+                    <rect width="32" height="64" transform="matrix(-1 0 0 1 64 0)" :fill="PRIMARY"/>
+                </mask>
+                <g mask="url(#mask0_2_13)">
+                    <circle r="28" transform="matrix(-1 0 0 1 32 32)" :stroke="PRIMARY" stroke-width="8"/>   
+                </g>
+            </svg>
+        </a>
     </div>
     <Header :primary='PRIMARY' :secondary="SECONDARY"/>
 
@@ -132,7 +142,7 @@ body {
     flex-grow: 1;
 }
 
-.navbar ul a{
+.navbar .socials{
     margin-right: 40px;
     font-size: 1.25rem;
 
@@ -157,12 +167,6 @@ body {
 
 .theme-switcher:hover {
     cursor: pointer;
-}
-
-.theme-switcher img {
-    width: 32px;
-    pointer-events: none;
-    user-select: none;
 }
 
 @keyframes nav {
