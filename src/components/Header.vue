@@ -81,8 +81,10 @@ export default {
 
             // const bounding = this.title.getBoundingClientRect()
 
+            // console.log(bounding.width)
 
-            var ground = Bodies.rectangle(550, window.innerHeight - 180 , 1000, 5, { isStatic: true, render: { visible: false } });
+
+            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight - 180 , window.innerWidth * 0.65, 5, { isStatic: true, render: { visible: false } });
             this.groundID = ground.id
             // console.log(ground.id)
 
@@ -147,6 +149,8 @@ export default {
             // console.log(bounding)
             // const texture = PIXI.
 
+            // console.log(bounding.width)
+
 
             const rectangle = Matter.Bodies.rectangle(
                 bounding.left + bounding.width / 2, 
@@ -158,7 +162,7 @@ export default {
                     // restitution: 0.1,
                     // frictionAir: this.getRandomNum(0, 0.006),
                     // frictionAir: 0.006,
-                    friction: 100,
+                    // friction: 100,
                     collisionFilter: {
                         category: 0x0004
                     },
@@ -191,13 +195,16 @@ export default {
             for (let i = 0; i < 5; i++) {
                 
                 this.engine.world.bodies.forEach(body => {
-                    if (!body.isStatic){
+                    // if (!body.isStatic){
     
                         Matter.Composite.remove(this.engine.world, body)
-                    }
+                    // }
                 });
                 
             }
+            var ground = Matter.Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight - 180 , window.innerWidth * 0.65, 5, { isStatic: true, render: { visible: true } });
+            Matter.Composite.add(this.engine.world, [ground]);
+
             this.addLetters(window.innerWidth * 0.001953125)
 
             // this.$forceUpdate()

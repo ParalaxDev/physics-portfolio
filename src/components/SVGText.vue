@@ -33,18 +33,18 @@ export default {
                     const nodes = parser.parseFromString(text, "image/svg+xml").documentElement.childNodes
                     // const svg = document.getElementsByTagName('svg')[0]
                     const svg = document.querySelector('.title')
-                    var y = 0
-                    var x = 0
+                    this.y = 0
+                    this.x = 0
 
                     const letters = this.text.split('')
                     // console.log(letters.length)
 
 
                     letters.forEach((letter) => {
-                        x += 1
+                        this.x += 1
                         if (letter == '~'){
-                            y += 1
-                            x = 0
+                            this.y += 1
+                            this.x = 0
                         }
                         nodes.forEach(node => {
                             if(node.attributes){
@@ -62,9 +62,9 @@ export default {
                                     // newElement.setAttribute("fill", "red")
                                     // var transformAttr = ' translateX("' + 100 * i + 'px")';
                                     // var transformAttr = 'translateX("100px")';
-                                    newElement.setAttribute('transform', `translate(${1200*x}, ${2200*y}), scale(1, -1)`);
-                                    // newElement.setAttribute('transform', `translate(${this.xOffset*x}, ${this.yOffset * y}), scale(1, -1)`);
-                                    // newElement.setAttribute('transform', `translate(${this.xOffset*x}, ${this.yOffset * y}), scale(${this.scale}), scale(1, -1)`);
+                                    newElement.setAttribute('transform', `translate(${1200*this.x}, ${2200*this.y}), scale(1, -1)`);
+                                    // newElement.setAttribute('transform', `translate(${this.xOffset*this.x}, ${this.yOffset * this.y}), scale(1, -1)`);
+                                    // newElement.setAttribute('transform', `translate(${this.xOffset*this.x}, ${this.yOffset * this.y}), scale(${this.scale}), scale(1, -1)`);
                                     // newElement.style.stroke = "#000"; //Set stroke colour
                                     // newElement.style.strokeWidth = "5px"; //Set stroke width
                                     svg.appendChild(newElement);
@@ -75,10 +75,10 @@ export default {
                         
                     });
 
-                    svg.setAttribute('viewBox', `0 0 ${x * 1400} ${2300 * (y)}`)
-                    svg.setAttribute('width', `${x * 40 * this.scale}px`)
-                    svg.setAttribute('height', `${250 * (y) * this.scale}px`)
-                    // console.log(y)
+                    svg.setAttribute('viewBox', `0 0 ${this.x * 1400} ${2300 * (this.y)}`)
+                    svg.setAttribute('width', `${this.x * 40 * this.scale}px`)
+                    svg.setAttribute('height', `${250 * (this.y) * this.scale}px`)
+                    // console.log(this.y)
 
                     // console.log(letters)
 
@@ -89,12 +89,28 @@ export default {
             // console.log(font)
             // console.log(doc)
         },
-        // windowResize() {
-        //     this.$forceUpdate()
-        // }
+        windowResize() {
+
+            const svg = document.querySelector('.title')
+
+            // const letters = this.text.split('')
+
+
+            // svg.setAttribute('viewBox', `0 0 ${this.x * 1400} ${2300 * this.y}`)
+            svg.setAttribute('width', `${this.x * 40 * window.innerWidth * 0.001953125}px`)
+            svg.setAttribute('height', `${250 * (this.y) * window.innerWidth * 0.001953125}px`)
+
+            console.log(`${this.x * 40 * window.innerWidth * 0.001953125}px`)
+        }
     },
     mounted() {
         this.init()
+    },
+    created() {
+        window.addEventListener("resize", this.windowResize);
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.windowResize);
     },
 
     
