@@ -202,7 +202,7 @@ export default {
                 });
                 
             }
-            var ground = Matter.Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight - 180 , window.innerWidth * 0.65, 5, { isStatic: true, render: { visible: true } });
+            var ground = Matter.Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight - 180 , window.innerWidth * 0.65, 5, { isStatic: true, render: { visible: false } });
             Matter.Composite.add(this.engine.world, [ground]);
 
             this.addLetters(window.innerWidth * 0.001953125)

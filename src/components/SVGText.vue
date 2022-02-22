@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         init() {
-            console.log('ran')
+            // console.log('ran')
 
             // var doc = null
 
@@ -91,16 +91,25 @@ export default {
         },
         windowResize() {
 
+            // console.log(window.innerWidth)
+
             const svg = document.querySelector('.title')
 
             // const letters = this.text.split('')
 
 
             // svg.setAttribute('viewBox', `0 0 ${this.x * 1400} ${2300 * this.y}`)
-            svg.setAttribute('width', `${this.x * 40 * window.innerWidth * 0.001953125}px`)
-            svg.setAttribute('height', `${250 * (this.y) * window.innerWidth * 0.001953125}px`)
+            // setTimeout(() => {
+            // for (let i = 0; i < 5; i++) {
+                
+                
+                svg.setAttribute('width', `${this.x * 40 * window.innerWidth * 0.001953125}px`)
+                svg.setAttribute('height', `${250 * (this.y) * window.innerWidth * 0.001953125}px`)
+            // }
 
-            console.log(`${this.x * 40 * window.innerWidth * 0.001953125}px`)
+            // }, 100)
+
+            // console.log(`${this.x * 40 * window.innerWidth * 0.001953125}px`)
         }
     },
     mounted() {
