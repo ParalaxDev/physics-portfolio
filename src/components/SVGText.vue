@@ -103,8 +103,8 @@ export default {
             // for (let i = 0; i < 5; i++) {
                 
                 
-                svg.setAttribute('width', `${this.x * 40 * window.innerWidth * 0.001953125}px`)
-                svg.setAttribute('height', `${250 * (this.y) * window.innerWidth * 0.001953125}px`)
+            svg.setAttribute('width', `${this.x * 40 * window.innerWidth * 0.001953125}px`)
+            svg.setAttribute('height', `${250 * (this.y) * window.innerWidth * 0.001953125}px`)
             // }
 
             // }, 100)
