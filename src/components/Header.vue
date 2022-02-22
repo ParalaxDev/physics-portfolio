@@ -1,6 +1,6 @@
 <template>
 
-    <SVGText text='Im a~Front end~DEveloper' :scale="this.scale" />
+    <SVGText text='Im a~Front end~DEveloper' />
     <div ref="physicsArea" id="physics-header"></div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     props: {
         primary: String,
         secondary: String,
-        scale: Number,
+        width: Number,
     },
     watch: { 
         primary: function() {
@@ -34,18 +34,10 @@ export default {
     
                         Matter.Composite.remove(this.engine.world, body)
                     }
-    
-                    
-                    // console.log(body.id)
                 });
                 
             }
-            // var ground = Matter.Bodies.rectangle(550, window.innerHeight - 180 , 1000, 5, { isStatic: true, render: { visible: false } });
-            // Matter.Composite.add(this.engine.world, [ground]);
-
-
-
-            this.addLetters()
+            this.addLetters(window.innerWidth * 0.001953125)
         }
     },
     methods: {
@@ -83,7 +75,7 @@ export default {
             setTimeout(() => {
                 
                 this.paths = this.title.querySelectorAll('path')
-                this.addLetters()
+                this.addLetters(window.innerWidth * 0.001953125)
                 // console.log(this.paths)
             }, 1000)
 
@@ -133,7 +125,7 @@ export default {
                         // console.log('removed')
                         // console.log(this.engine.world.bodies.length)
                         if (this.engine.world.bodies.length <= 1){
-                            this.addLetters()
+                            this.addLetters(window.innerWidth * 0.001953125)
                             // console.log('added letters')
                         }
                     }
@@ -142,12 +134,12 @@ export default {
             
         },
 
-        addLetters () {
+        addLetters (scale) {
             this.paths.forEach(path => {
             // const letter = path.attributes.class.value.split('-')[1]
             // console.log(path)
-            console.log(path.attributes)
-            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 ${12000 / this.scale} ${3000 / this.scale}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${155 - (17.5 * (this.scale -1))}, ${60 + (22 * (this.scale - 1))})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
+            // console.log(path.attributes)
+            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 ${12000 / scale} ${3000 / scale}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${155 - (17.5 * (scale -1))}, ${60 + (22 * (scale - 1))})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E
@@ -195,6 +187,21 @@ export default {
         windowResizeHandler: function () {
             this.render.canvas.width =  window.innerWidth
             this.render.canvas.height = window.innerHeight
+
+            for (let i = 0; i < 5; i++) {
+                
+                this.engine.world.bodies.forEach(body => {
+                    if (!body.isStatic){
+    
+                        Matter.Composite.remove(this.engine.world, body)
+                    }
+                });
+                
+            }
+            this.addLetters(window.innerWidth * 0.001953125)
+
+            // this.$forceUpdate()
+
         },
         convertToURI: function (data) {
 

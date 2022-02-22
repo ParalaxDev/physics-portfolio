@@ -9,15 +9,21 @@
 // import font from '../assets/roboto-mono-700.svg'
 
 export default {
+    data() {
+        return {
+            scale: window.innerWidth * 0.001953125
+        }
+    },
     props: {
         text: String,
         size: Number,
         xOffset: Number,
         yOffset: Number,
-        scale: Number
+        // scale: Number
     },
     methods: {
         init() {
+            console.log('ran')
 
             // var doc = null
 
@@ -26,7 +32,7 @@ export default {
                 .then((text) => {
                     const nodes = parser.parseFromString(text, "image/svg+xml").documentElement.childNodes
                     // const svg = document.getElementsByTagName('svg')[0]
-                    const svg = document.querySelector('.title')  
+                    const svg = document.querySelector('.title')
                     var y = 0
                     var x = 0
 
@@ -82,11 +88,15 @@ export default {
             
             // console.log(font)
             // console.log(doc)
-        }
+        },
+        // windowResize() {
+        //     this.$forceUpdate()
+        // }
     },
     mounted() {
         this.init()
-    }
+    },
+
     
 }
 </script>

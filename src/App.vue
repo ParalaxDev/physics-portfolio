@@ -18,7 +18,7 @@
             </svg>
         </a>
     </div>
-    <Header :primary='PRIMARY' :secondary="SECONDARY" :scale="this.width * 0.001953125" />
+    <Header :primary='PRIMARY' :secondary="SECONDARY" />
     
     
 
@@ -76,9 +76,6 @@ export default {
     }
 
   },
-  mounted() {
-      this.width = window.innerWidth
-  }
 }
 </script>
 
