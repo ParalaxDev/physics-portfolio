@@ -18,7 +18,7 @@
             </svg>
         </a>
     </div>
-    <Header :primary='PRIMARY' :secondary="SECONDARY" scale=3 />
+    <Header :primary='PRIMARY' :secondary="SECONDARY" scale=1 />
     
     
 
@@ -98,7 +98,7 @@ export default {
 * {
     padding: 0;
     margin: 0;
-    /* overflow: hidden; */
+    overflow: hidden;
     font-family: 'Roboto Mono', monospace;
     /* background: #D3D0CB; */
     color: var(--primary-color);
