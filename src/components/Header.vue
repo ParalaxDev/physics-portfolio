@@ -1,7 +1,6 @@
 <template>
 
-    <SVGText text='Im a~Front end~DEveloper' size=3 />
-
+    <SVGText text='Im a~Front end~DEveloper' :scale="this.scale" />
     <div ref="physicsArea" id="physics-header"></div>
 </template>
 
@@ -23,7 +22,8 @@ export default {
     },
     props: {
         primary: String,
-        secondary: String
+        secondary: String,
+        scale: Number,
     },
     watch: { 
         primary: function() {
@@ -75,7 +75,7 @@ export default {
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
-                    // showBounds: true,
+                    showBounds: true,
                     showSleeping: false,
                 }
             });
@@ -146,7 +146,8 @@ export default {
             this.paths.forEach(path => {
             // const letter = path.attributes.class.value.split('-')[1]
             // console.log(path)
-            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 4000 1000' xmlns='http://www.w3.org/2000/svg'  transform='translate(120, 20)' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style='transform-origin: center; fill: ${this.primary}'></path></svg>`)
+            console.log(path.attributes)
+            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 ${12000 / this.scale} ${3000 / this.scale}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${155 - (17.5 * (this.scale -1))}, ${65 + (22 * (this.scale - 1))})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E

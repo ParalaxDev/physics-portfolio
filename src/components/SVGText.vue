@@ -12,8 +12,9 @@ export default {
     props: {
         text: String,
         size: Number,
-        primary: String,
-        secondary: String
+        xOffset: Number,
+        yOffset: Number,
+        scale: Number
     },
     methods: {
         init() {
@@ -55,7 +56,9 @@ export default {
                                     // newElement.setAttribute("fill", "red")
                                     // var transformAttr = ' translateX("' + 100 * i + 'px")';
                                     // var transformAttr = 'translateX("100px")';
-                                    newElement.setAttribute('transform', 'translate(' + 1200*x + ', ' + 2200 * y + '), scale (1, -1)');
+                                    newElement.setAttribute('transform', `translate(${1200*x}, ${2200*y}), scale(1, -1)`);
+                                    // newElement.setAttribute('transform', `translate(${this.xOffset*x}, ${this.yOffset * y}), scale(1, -1)`);
+                                    // newElement.setAttribute('transform', `translate(${this.xOffset*x}, ${this.yOffset * y}), scale(${this.scale}), scale(1, -1)`);
                                     // newElement.style.stroke = "#000"; //Set stroke colour
                                     // newElement.style.strokeWidth = "5px"; //Set stroke width
                                     svg.appendChild(newElement);
@@ -66,9 +69,9 @@ export default {
                         
                     });
 
-                    svg.setAttribute('viewBox', `0 0 ${x * 1300} ${2200 * (y)}`)
-                    svg.setAttribute('width', `${x * 40 * this.size}px`)
-                    svg.setAttribute('height', `${250 * (y ) * this.size}px`)
+                    svg.setAttribute('viewBox', `0 0 ${x * 1400} ${2300 * (y)}`)
+                    svg.setAttribute('width', `${x * 40 * this.scale}px`)
+                    svg.setAttribute('height', `${250 * (y) * this.scale}px`)
                     // console.log(y)
 
                     // console.log(letters)
