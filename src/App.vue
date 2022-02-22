@@ -18,7 +18,7 @@
             </svg>
         </a>
     </div>
-    <Header :primary='PRIMARY' :secondary="SECONDARY" scale=1 />
+    <Header :primary='PRIMARY' :secondary="SECONDARY" :scale="this.width * 0.001953125" />
     
     
 
@@ -41,7 +41,8 @@ export default {
     return {
       themeSwitcher: require('./assets/theme-switcher.svg'),
       PRIMARY: '#393E41',
-      SECONDARY: '#D3D0CB'
+      SECONDARY: '#D3D0CB',
+      width: 1,
     }
   },
   methods: {
@@ -74,6 +75,9 @@ export default {
 
     }
 
+  },
+  mounted() {
+      this.width = window.innerWidth
   }
 }
 </script>

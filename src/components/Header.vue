@@ -75,7 +75,7 @@ export default {
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
-                    showBounds: true,
+                    // showBounds: true,
                     showSleeping: false,
                 }
             });
@@ -165,7 +165,7 @@ export default {
                     // isSleeping: true,
                     // restitution: 0.1,
                     // frictionAir: this.getRandomNum(0, 0.006),
-                    frictionAir: 0.006,
+                    // frictionAir: 0.006,
                     friction: 100,
                     collisionFilter: {
                         category: 0x0004
