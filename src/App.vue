@@ -3,8 +3,8 @@
     <div class="noise" />
     <div class="navbar" >
         <ul>
-            <a class='socials' href='https://github.com/paralaxdev'>Github</a>
-            <a class='socials' href='https://dsc.bio/paralax'>Discord</a>
+            <a class='socials' href='https://github.com/paralaxdev'><span>Github</span></a>
+            <a class='socials' href='https://dsc.bio/paralax'><span>Discord</span></a>
         </ul>
         <a class='theme-switcher' v-on:click="themeSwitch()">
             <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,13 +99,13 @@ export default {
 * {
     padding: 0;
     margin: 0;
-    overflow: hidden;
     font-family: 'Roboto Mono', monospace;
     /* background: #D3D0CB; */
     color: var(--primary-color);
 }
 
 body {
+    overflow: hidden;
     
     background: var(--secondary-color);
 }
@@ -149,20 +149,48 @@ body {
 .navbar .socials{
     margin-right: 40px;
     font-size: 1.25rem;
-
-    text-decoration-style: dotted;
-    text-decoration-thickness: 2.5px;
-    text-underline-offset: 40px;
-    height: 50px;
     display: inline-block;
+    /* float: left; */
+    width: fit-content;
+    
+
+    text-decoration: none;
     /* text-underline-position: under; */
     transition: 0.25s ;
 }
+.navbar ul a span::before{
+    content: '';
+    position: relative;
+    width: 100%;
+    height: 3px;
+    /* background: var(--primary-color); */
+    top: calc(1.25rem * 2);
+    /* left: 0; */
+    border-top: 3px dotted var(--primary-color);
+    pointer-events: none;
+    display: inline-block;
+}
 
-.navbar ul a:hover {
+.navbar ul a span::before {
+    transform-origin: 100% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.3s;
+}
 
-    text-underline-offset: 7.5px;
+.navbar ul a span:hover::before {
+    transform-origin: 0% 50%;
+    transform: scale3d(1, 1, 1);
+}
+
+.navbar ul a {
+
+    width: 100%;
+
     /* text-decoration-thickness: 3px;  */
+}
+
+.navbar ul a span {
+    width: inherit;
 }
 
 .theme-switcher {
