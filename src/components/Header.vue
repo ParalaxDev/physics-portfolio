@@ -85,7 +85,7 @@ export default {
             // console.log(bounding.width)
 
 
-            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight * 0.75, window.innerWidth * 0.65, 5, { isStatic: true, render: { visible: false } });
+            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight * 0.75, window.innerWidth * 0.65, 20, { isStatic: true, render: { visible: false } });
             this.groundID = ground.id
             // console.log(ground.id)
 
@@ -163,20 +163,12 @@ export default {
                     // isSleeping: true,
                     // restitution: 0.1,
                     // frictionAir: this.getRandomNum(0, 0.006),
-                    // frictionAir: 0.006,
-                    // friction: 100,
-                    collisionFilter: {
-                        category: 0x0004
-                    },
+                    // frictionAir: 0.02,
+                    friction: 100,
+                    frictionStatic: 100,
+                    // density: 10000,
                     render: {
-                        // fillStyle: '#000000',
-                        // strokeStyle: 'blue',
-                        // lineWidth: 3,
                         sprite: {
-                            // texture: "data:image/svg+xml,%3Csvg width='1000px' height='100px' viewBox='0 0 13000 2000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1142 456H861Q857 390 839 343T790 266Q759 236 715 222T616 208Q575 208 542 217T481 247Q456 265 437 292T403 354Q383 405 374 473T364 629V827Q364 891 370 946T389 1048Q406 1107 434 1151T504 1220Q528 1234 556 1241T618 1248Q680 1248 724 1232T799 1183Q828 1150 843 1101T863 987H1143Q1133 1101 1095 1192T991 1346Q925 1409 832 1443T618 1477Q537 1477 467 1457T337 1398Q271 1353 219 1288T135 1140Q107 1072 93 993T79 825V629Q79 535 94 451T139 297Q169 227 212 169T312 70Q373 26 449 3T616 -21Q730 -21 824 12T986 108Q1054 170 1094 258T1142 456Z' style='transform-origin: center;' transform='translate(1100, 0), scale (1, -1)'%3E%3C/path%3E%3C/svg%3E"
-                            // texture: 'data:image/svg+xml,%3Csvg width="1000px" height="100px" viewBox="0 0 13000 2000" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1142 456H861Q857 390 839 343T790 266Q759 236 715 222T616 208Q575 208 542 217T481 247Q456 265 437 292T403 354Q383 405 374 473T364 629V827Q364 891 370 946T389 1048Q406 1107 434 1151T504 1220Q528 1234 556 1241T618 1248Q680 1248 724 1232T799 1183Q828 1150 843 1101T863 987H1143Q1133 1101 1095 1192T991 1346Q925 1409 832 1443T618 1477Q537 1477 467 1457T337 1398Q271 1353 219 1288T135 1140Q107 1072 93 993T79 825V629Q79 535 94 451T139 297Q169 227 212 169T312 70Q373 26 449 3T616 -21Q730 -21 824 12T986 108Q1054 170 1094 258T1142 456Z" style="transform-origin: center;" transform="translate(1100, 0), scale (1, -1)"%3E%3C/path%3E%3C/svg%3E'
-                            // texture: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2096 74" width="30" height="30" /%3E%3Cpath d="M1201 1227V1456H27V1227H470V0H752V1227H1201Z/%3E%3C/svg%3E'
-                            // texture: "data:image/svg+xml,%3csvg width='1000px' height='100px' viewBox='0 0 13000 2000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1142 456H861Q857 390 839 343T790 266Q759 236 715 222T616 208Q575 208 542 217T481 247Q456 265 437 292T403 354Q383 405 374 473T364 629V827Q364 891 370 946T389 1048Q406 1107 434 1151T504 1220Q528 1234 556 1241T618 1248Q680 1248 724 1232T799 1183Q828 1150 843 1101T863 987H1143Q1133 1101 1095 1192T991 1346Q925 1409 832 1443T618 1477Q537 1477 467 1457T337 1398Q271 1353 219 1288T135 1140Q107 1072 93 993T79 825V629Q79 535 94 451T139 297Q169 227 212 169T312 70Q373 26 449 3T616 -21Q730 -21 824 12T986 108Q1054 170 1094 258T1142 456Z' style='transform-origin: center;' transform='translate(1100, 0), scale (1, -1)'%3e%3c/path%3e%3c/svg%3e"
                             texture: svgURI
                         }   
                     }
