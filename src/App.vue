@@ -6,8 +6,8 @@
             <a class='socials' href='https://github.com/paralaxdev'><span>Github</span></a>
             <a class='socials' href='https://dsc.bio/paralax'><span>Discord</span></a>
         </ul>
-        <a class='theme-switcher' v-on:click="themeSwitch()">
-            <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- <a class='theme-switcher' v-on:click="themeSwitch()"> -->
+            <svg class='theme-switcher' v-on:click="themeSwitch()" width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0V64Z" :fill="PRIMARY"/>
                 <mask id="mask0_2_13" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="32" y="0" width="32" height="64">
                     <rect width="32" height="64" transform="matrix(-1 0 0 1 64 0)" :fill="PRIMARY"/>
@@ -16,7 +16,7 @@
                     <circle r="28" transform="matrix(-1 0 0 1 32 32)" :stroke="PRIMARY" stroke-width="8"/>   
                 </g>
             </svg>
-        </a>
+        <!-- </a> -->
     </div>
     <Header :primary='PRIMARY' :secondary="SECONDARY" />
     
@@ -111,7 +111,7 @@ body {
 }
 
 .noise {
-    /* background-image: url('/assets/noise.svg'); */
+    background-image: url('/assets/noise.svg');
     background-repeat: repeat;  
     display:block;
     position:fixed;
@@ -158,26 +158,27 @@ body {
     /* text-underline-position: under; */
     transition: 0.25s ;
 }
-.navbar ul a span::before{
+.navbar ul a span::after{
     content: '';
     position: relative;
     width: 100%;
-    height: 3px;
+    /* height: 3px; */
     /* background: var(--primary-color); */
-    top: calc(1.25rem * 2);
+    /* top: calc(1.25rem * 2); */
     /* left: 0; */
     border-top: 3px dotted var(--primary-color);
+    top: -1.2rem;
     pointer-events: none;
     display: inline-block;
 }
 
-.navbar ul a span::before {
+.navbar ul a span::after {
     transform-origin: 100% 50%;
     transform: scale3d(0, 1, 1);
     transition: transform 0.3s;
 }
 
-.navbar ul a span:hover::before {
+.navbar ul a span:hover::after {
     transform-origin: 0% 50%;
     transform: scale3d(1, 1, 1);
 }
@@ -195,20 +196,14 @@ body {
 
 .theme-switcher {
     padding: 0px 75px;
+    transition: 0.5s cubic-bezier(.77,0,.175,1);
 }
 
 .theme-switcher:hover {
     cursor: pointer;
-}
-
-.theme-switcher svg {
-    transition: 0.5s cubic-bezier(.77,0,.175,1);
-}
-
-.theme-switcher svg:hover {
     transform: rotate(180deg);
-
 }
+
 
 @keyframes nav {
     0% {
