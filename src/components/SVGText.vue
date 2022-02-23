@@ -11,7 +11,6 @@
 export default {
     data() {
         return {
-            scale: window.innerWidth * 0.001953125
         }
     },
     props: {
@@ -19,7 +18,7 @@ export default {
         size: Number,
         xOffset: Number,
         yOffset: Number,
-        // scale: Number
+        scale: Number
     },
     methods: {
         init() {

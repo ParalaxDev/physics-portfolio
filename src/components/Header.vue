@@ -1,6 +1,6 @@
 <template>
 
-    <SVGText text='Im a~Front end~DEveloper' />
+    <SVGText text='Im a~Front end~DEveloper' :scale="this.scale"/>
     <div ref="physicsArea" id="physics-header"></div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
     },
     data() {
         return {
-            groundID: 1
+            groundID: 1,
+            scale: 5
         }
     },
     props: {
@@ -67,7 +68,7 @@ export default {
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
-                    // showBounds: true,
+                    showBounds: true,
                     showSleeping: false,
                 }
             });
@@ -141,7 +142,7 @@ export default {
             // const letter = path.attributes.class.value.split('-')[1]
             // console.log(path)
             // console.log(path.attributes)
-            const svgURI = this.convertToURI(`<svg width='350px' height='350px' viewBox='0 0 ${12000 / scale} ${3000 / scale}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${155 - (17.5 * (scale -1))}, ${60 + (22 * (scale - 1))})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
+            const svgURI = this.convertToURI(`<svg width='${100 * this.scale}px' height='${100 * this.scale}px' viewBox='0 0 ${4000} ${1000}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${155 - (25 * (scale - 1))}, ${60 + (15 * (scale - 1))})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E
@@ -155,8 +156,8 @@ export default {
             const rectangle = Matter.Bodies.rectangle(
                 bounding.left + bounding.width / 2, 
                 bounding.top + bounding.height / 2, 
-                bounding.width * 1.1,
-                bounding.height * 1.1,
+                bounding.width,
+                bounding.height,
                 {
                     // isSleeping: true,
                     // restitution: 0.1,
