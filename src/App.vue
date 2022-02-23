@@ -111,7 +111,7 @@ body {
 }
 
 .noise {
-    background-image: url('/assets/noise.svg');
+    /* background-image: url('/assets/noise.svg'); */
     background-repeat: repeat;  
     display:block;
     position:fixed;
