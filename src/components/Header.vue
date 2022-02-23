@@ -68,7 +68,7 @@ export default {
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
-                    showBounds: true,
+                    // showBounds: true,
                     showSleeping: false,
                 }
             });
@@ -85,7 +85,7 @@ export default {
             // console.log(bounding.width)
 
 
-            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight * 0.75, window.innerWidth * 0.65, 20, { isStatic: true, render: { visible: false } });
+            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03), window.innerHeight * 0.75, window.innerWidth * 0.65, 20, { isStatic: true, render: { visible: false } });
             this.groundID = ground.id
             // console.log(ground.id)
 

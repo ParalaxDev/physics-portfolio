@@ -142,7 +142,7 @@ body {
 }
 
 .navbar ul{
-    padding: 0px 75px;
+    padding: 0px 4%;
     flex-grow: 1;
 }
 
