@@ -143,7 +143,7 @@ export default {
             // console.log(path)
             // console.log(path.attributes)
             // const svgURI = this.convertToURI(`<svg width='${100 * this.scale}px' height='${100 * this.scale}px' viewBox='0 0 ${4000} ${1000}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${155 - (17.5 * (this.scale - 1))}, ${60 + (22 * (this.scale - 1))})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
-            const svgURI = this.convertToURI(`<svg width='${100 * scale}px' height='${100 * scale}px' viewBox='0 0 ${4000} ${1000}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${35 * scale}, ${30 * scale})' ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
+            const svgURI = this.convertToURI(`<svg width='${100 * scale}px' height='${100 * scale}px' viewBox='0 0 ${4000} ${1000}' xmlns='http://www.w3.org/2000/svg'  transform='translate(${35 * scale}px, ${30 * scale}px)'  style="-webkit-transform: translate(${35 * scale}px, ${30 * scale}px);" ><path d='${path.attributes.d.value}' transform='scale (1, -1)' style=' fill: ${this.primary}'></path></svg>`)
             // this.convertToURI('<svg viewBox="0 0 2096 74"><path d="M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z" /></svg>')
 
             // data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2096 74'%3E%3Cpath d='M 2073.193 12.207 L 2095.117 12.207 L 2095.117 1.026 L 2037.793 1.026 L 2037.793 12.207 L 2059.424 12.207 L 2059.424 72.119 L 2073.193 72.119 L 2073.193 12.207 Z' /%3E%3C/svg%3E
