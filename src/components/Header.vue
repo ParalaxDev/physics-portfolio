@@ -71,7 +71,7 @@ export default {
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
-                    showBounds: true,
+                    // showBounds: true,
                     showSleeping: false,
                 }
             });

@@ -103,7 +103,7 @@ export default {
     // setInterval(() => {
     
     // }, 100)
-    console.log(document.readyState)
+    // console.log(document.readyState)
 
   },
  
