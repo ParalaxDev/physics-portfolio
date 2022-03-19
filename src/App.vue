@@ -8,17 +8,17 @@
         </ul>
         <!-- <a class='theme-switcher' v-on:click="themeSwitch()"> -->
             <!-- <svg class='theme-switcher' v-on:click="themeSwitch()" width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0V64Z" :fill="PRIMARY"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0V64Z" :fill="currentPrimary"/>
                 <mask id="mask0_2_13" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="32" y="0" width="32" height="64">
-                    <rect width="32" height="64" transform="matrix(-1 0 0 1 64 0)" :fill="PRIMARY"/>
+                    <rect width="32" height="64" transform="matrix(-1 0 0 1 64 0)" :fill="currentPrimary"/>
                 </mask>
                 <g mask="url(#mask0_2_13)">
-                    <circle r="28" transform="matrix(-1 0 0 1 32 32)" :stroke="PRIMARY" stroke-width="8"/>   
+                    <circle r="28" transform="matrix(-1 0 0 1 32 32)" :stroke="currentPrimary" stroke-width="8"/>   
                 </g>
             </svg> -->
         <!-- </a> -->
     </div>
-    <Header :primary='PRIMARY' :secondary="SECONDARY" />
+    <Header :primary='currentPrimary' :secondary="currentSecondary" />
     
     
 
@@ -40,8 +40,10 @@ export default {
   data(){
     return {
       themeSwitcher: require('./assets/theme-switcher.svg'),
-      PRIMARY: '#393E41',
-      SECONDARY: '#D3D0CB',
+      PRIMARY: '#40476D',
+      SECONDARY: '#FED18C',
+      currentPrimary: '#000',
+      currentSecondary: '#000',
       width: 1,
     }
   },
@@ -51,29 +53,33 @@ export default {
         const rootCompStyled = getComputedStyle(root)
         // console.log(rootCompStyled.getPropertyValue('--primary-color'))
 
-        if (rootCompStyled.getPropertyValue('--primary-color') == '#393E41'){
-            this.PRIMARY = '#D3D0CB'
-            this.SECONDARY = '#393E41'
+        if (rootCompStyled.getPropertyValue('--primary-color') == this.PRIMARY){
+            this.currentPrimary = this.SECONDARY
+            this.currentSecondary = this.PRIMARY
         } else {
-            this.PRIMARY = '#393E41'
-            this.SECONDARY = '#D3D0CB'
+            this.currentPrimary = this.PRIMARY
+            this.currentSecondary = this.SECONDARY
         }
 
-        root.style.setProperty('--primary-color', this.PRIMARY)
-        root.style.setProperty('--secondary-color', this.SECONDARY)
+        root.style.setProperty('--primary-color', this.currentPrimary)
+        root.style.setProperty('--secondary-color', this.currentSecondary)
 
       }
   },
   beforeMount() {
     this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const root = document.querySelector(':root')
     if (this.prefersDarkScheme){
-        this.SECONDARY = '#393E41'
-        this.PRIMARY = '#D3D0CB'
+        this.currentSecondary = this.PRIMARY
+        this.currentPrimary = this.SECONDARY
     } else {
-        this.PRIMARY = '#393E41'
-        this.SECONDARY = '#D3D0CB'
+        this.currentPrimary = this.PRIMARY
+        this.currentSecondary = this.SECONDARY
 
     }
+
+    root.style.setProperty('--primary-color', this.currentPrimary)
+    root.style.setProperty('--secondary-color', this.currentSecondary)
 
   },
 }
@@ -82,7 +88,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
-:root {
+/* :root {
       --secondary-color: #D3D0CB;
       --primary-color: #393E41;
 }
@@ -93,7 +99,7 @@ export default {
       --secondary-color: #393E41;
     }
 
-}
+} */
 
 
 * {

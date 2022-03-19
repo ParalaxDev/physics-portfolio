@@ -28,6 +28,9 @@ export default {
     },
     watch: { 
         primary: function() {
+
+            console.log('changed')
+
             for (let i = 0; i < 5; i++) {
                 
                 this.engine.world.bodies.forEach(body => {
