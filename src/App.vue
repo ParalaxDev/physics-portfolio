@@ -40,8 +40,8 @@ export default {
   data(){
     return {
       themeSwitcher: require('./assets/theme-switcher.svg'),
-      PRIMARY: '#40476D',
-      SECONDARY: '#FED18C',
+      PRIMARY: '#143d59 ',
+      SECONDARY: '#f4b41a',
       currentPrimary: '#000',
       currentSecondary: '#000',
       width: 1,
