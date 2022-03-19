@@ -120,6 +120,7 @@ export default {
 body {
     overflow: hidden;
     
+    
     background: var(--secondary-color);
 }
 

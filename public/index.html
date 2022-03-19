@@ -17,10 +17,17 @@
     <!-- Include this to make the og:image larger -->
     <meta name="twitter:card" content="summary_large_image">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet"> 
+
   </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  <body style="padding: 0;margin: 0;">
+    <noscript style="display: inline-block; width: 100vw; height: 100vh; background-color: #f4b41a;">
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+
+            <strong style="font-family: 'Roboto Mono', monospace; color: #143d59;">We're sorry but <a href="https://paralax.xyz"  style="color: #CFDBD5;">paralax.xyz</a> doesn't work properly without JavaScript enabled. Please <a href="https://www.enable-javascript.com/" style="color: #CFDBD5;">enable</a> it to continue.</strong>
+        </div>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
