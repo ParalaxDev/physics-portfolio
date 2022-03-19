@@ -71,7 +71,7 @@ export default {
                     background: 'transparent',
                     wireframes: false,
                     // showCollisions: true,
-                    // showBounds: true,
+                    showBounds: true,
                     showSleeping: false,
                 }
             });
@@ -167,8 +167,8 @@ export default {
                     // restitution: 0.1,
                     // frictionAir: this.getRandomNum(0, 0.006),
                     // frictionAir: 0.02,
-                    friction: 100,
-                    frictionStatic: 100,
+                    // friction: 50,
+                    // frictionStatic: 100,
                     // density: 10000,
                     render: {
                         sprite: {

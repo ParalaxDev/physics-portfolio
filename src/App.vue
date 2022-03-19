@@ -1,13 +1,16 @@
 <template>
 
-    <div class="noise" />
+    <!-- <div id='loader'> -->
+        
+    <!-- </div> -->
+    <!-- <div class="noise" /> -->
+
     <div class="navbar" >
         <ul>
             <a class='socials' href='https://github.com/paralaxdev'><span>Github</span></a>
             <a class='socials' href='https://dsc.bio/paralax'><span>Discord</span></a>
         </ul>
-        <!-- <a class='theme-switcher' v-on:click="themeSwitch()"> -->
-            <svg class='theme-switcher' v-on:click="themeSwitch()" width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- <svg class='theme-switcher' v-on:click="themeSwitch()" width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0V64Z" :fill="currentPrimary"/>
                 <mask id="mask0_2_13" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="32" y="0" width="32" height="64">
                     <rect width="32" height="64" transform="matrix(-1 0 0 1 64 0)" :fill="currentPrimary"/>
@@ -15,9 +18,17 @@
                 <g mask="url(#mask0_2_13)">
                     <circle r="28" transform="matrix(-1 0 0 1 32 32)" :stroke="currentPrimary" stroke-width="8"/>   
                 </g>
-            </svg>
-        <!-- </a> -->
+            </svg> -->
+
+        <!-- <svg class="spinner" width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1,0,0,1,-198.102,-204.305)">
+                <g transform="matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)">
+                <path d="M229.664,150.655C229.664,136.11 241.455,124.319 256,124.319C270.545,124.319 282.336,136.11 282.336,150.655L282.336,210.384L334.063,180.52C346.66,173.247 362.767,177.563 370.039,190.159C377.312,202.756 372.996,218.863 360.399,226.135L308.672,256L360.399,285.865C372.996,293.137 377.312,309.244 370.039,321.841C362.767,334.437 346.66,338.753 334.063,331.48L282.336,301.616L282.336,361.345C282.336,375.89 270.545,387.681 256,387.681C241.455,387.681 229.664,375.89 229.664,361.345L229.664,301.616L177.937,331.48C165.34,338.753 149.233,334.437 141.961,321.841C134.688,309.244 139.004,293.137 151.601,285.865L203.328,256L151.601,226.135C139.004,218.863 134.688,202.756 141.961,190.159C149.233,177.563 165.34,173.247 177.937,180.52L229.664,210.384L229.664,150.655Z" style="fill:rgb(0,13,89);"/>
+                </g>
+            </g>
+        </svg> -->
     </div>
+
     <Header :primary='currentPrimary' :secondary="currentSecondary" />
     
     
@@ -40,7 +51,7 @@ export default {
   data(){
     return {
       themeSwitcher: require('./assets/theme-switcher.svg'),
-      PRIMARY: '#143d59 ',
+      PRIMARY: '#000D59 ',
       SECONDARY: '#f4b41a',
       currentPrimary: '#000',
       currentSecondary: '#000',
@@ -85,10 +96,17 @@ export default {
 
     }
 
+    
     root.style.setProperty('--primary-color', this.currentPrimary)
     root.style.setProperty('--secondary-color', this.currentSecondary)
 
+    // setInterval(() => {
+    
+    // }, 100)
+    console.log(document.readyState)
+
   },
+ 
 }
 </script>
 
@@ -123,6 +141,48 @@ body {
     
     background: var(--secondary-color);
 }
+
+#loader {
+    background: var(--secondary-color);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    position: relative;
+    animation: finished 1.8s 1.8s forwards;
+}
+
+.spinner {
+    animation: spinner 1.8s infinite;
+    padding: 0px 75px;
+
+    /* transition: 1s; */
+
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+        transform: rotate(180deg);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes finished {
+    to {
+        opacity: 0;
+    }
+    
+}
+
 
 .noise {
     /* background-image: url('/assets/noise.svg'); */
