@@ -45,6 +45,35 @@ export default {
         }
     },
     methods: {
+        randInt(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        },
+        spawnObject() {
+            const rectangle = Matter.Bodies.rectangle(
+                this.randInt(0, window.innerWidth * 0.7), 0, 50, 50,
+                {
+                    // isSleeping: true,
+                    // restitution: 0.1,
+                    frictionAir: this.getRandomNum(0, 0.006),
+                    // frictionAir: 0.02,
+                    // friction: 50,
+                    // frictionStatic: 100,
+                    density: 0.06,
+                    render: {
+                        sprite: {
+                            texture: "data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 116 104' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' xmlns:serif='http://www.serif.com/' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cg transform='matrix(1,0,0,1,-198.102,-204.305)'%3E%3Cg transform='matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)'%3E%3Cpath d='M229.664,150.655C229.664,136.11 241.455,124.319 256,124.319C270.545,124.319 282.336,136.11 282.336,150.655L282.336,210.384L334.063,180.52C346.66,173.247 362.767,177.563 370.039,190.159C377.312,202.756 372.996,218.863 360.399,226.135L308.672,256L360.399,285.865C372.996,293.137 377.312,309.244 370.039,321.841C362.767,334.437 346.66,338.753 334.063,331.48L282.336,301.616L282.336,361.345C282.336,375.89 270.545,387.681 256,387.681C241.455,387.681 229.664,375.89 229.664,361.345L229.664,301.616L177.937,331.48C165.34,338.753 149.233,334.437 141.961,321.841C134.688,309.244 139.004,293.137 151.601,285.865L203.328,256L151.601,226.135C139.004,218.863 134.688,202.756 141.961,190.159C149.233,177.563 165.34,173.247 177.937,180.52L229.664,210.384L229.664,150.655Z' style='fill:rgb(0,13,89);'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A"
+                        }   
+                    },
+                    collisionFilter: {
+                        category: 0x0008,
+                        mask: 0x0001 | 0x0004
+                    },
+                }
+            )
+
+            Matter.Composite.add(this.engine.world, [rectangle]);
+
+        },
         init: function() {
             // module aliases
             var Engine = Matter.Engine,
@@ -88,7 +117,7 @@ export default {
             // console.log(bounding.width)
 
 
-            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03), window.innerHeight * 0.75, window.innerWidth * 0.65, 20, { isStatic: true, render: { visible: false } });
+            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03), window.innerHeight * 0.75, window.innerWidth * 0.65, 20, { isStatic: true, render: { visible: false }, collisionFilter: {category: 0x0002} });
             this.groundID = ground.id
             // console.log(ground.id)
 
@@ -170,6 +199,9 @@ export default {
                     // friction: 50,
                     // frictionStatic: 100,
                     // density: 10000,
+                    collisionFilter: {
+                        category: 0x0004
+                    },
                     render: {
                         sprite: {
                             texture: svgURI
@@ -237,11 +269,13 @@ export default {
 
 
     mounted: function() {
-
+        
 
         this.init()
     },
+
     created() {
+        // this.$root.$refs.Header = this
         window.addEventListener("resize", this.windowResizeHandler);
     },
     unmounted() {
