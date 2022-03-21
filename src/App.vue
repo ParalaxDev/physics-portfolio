@@ -3,7 +3,7 @@
     <!-- <div id='loader'> -->
         
     <!-- </div> -->
-    <!-- <div class="noise" /> -->
+    <div class="noise" />
     <svg class="spinner" v-on:click='spawnObject' width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
         <g transform="matrix(1,0,0,1,-198.102,-204.305)">
             <g transform="matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)">
@@ -207,7 +207,7 @@ body {
 }
 
 .noise {
-    /* background-image: url('/assets/noise.svg'); */
+    background-image: url('/assets/noise-light.svg');
     background-repeat: repeat;  
     display:block;
     position:fixed;
@@ -221,6 +221,11 @@ body {
     animation:noise .6s steps(1) infinite;
     background-size:250px 250px;
     will-change:transform
+}
+@media (prefers-color-scheme: dark) {
+    .noise {
+        background-image: url('/assets/noise-dark.svg') !important;
+    }
 }
 
 .navbar {
