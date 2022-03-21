@@ -18,7 +18,8 @@ export default {
     data() {
         return {
             groundID: 1,
-            scale: window.innerWidth * 0.001953125
+            isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600,
+            scale: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600 ? window.innerWidth * 0.0029 : window.innerWidth * 0.001953125
         }
     },
     props: {
@@ -41,7 +42,7 @@ export default {
                 });
                 
             }
-            this.addLetters(window.innerWidth * 0.001953125)
+            this.addLetters(this.scale)
         }
     },
     methods: {
@@ -75,6 +76,10 @@ export default {
 
         },
         init: function() {
+
+            
+
+
             // module aliases
             var Engine = Matter.Engine,
                 Render = Matter.Render,
@@ -108,7 +113,7 @@ export default {
             setTimeout(() => {
                 
                 this.paths = this.title.querySelectorAll('path')
-                this.addLetters(window.innerWidth * 0.001953125)
+                this.addLetters(this.scale)
                 // console.log(this.paths)
             }, 1000)
 
@@ -116,8 +121,11 @@ export default {
 
             // console.log(bounding.width)
 
+            let x = this.isMobile ? (window.innerWidth) / 2 : (window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03)
+            let y = this.isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.75
+            let w = this.isMobile ? window.innerHeight : window.innerWidth * 0.65
 
-            var ground = Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03), window.innerHeight * 0.75, window.innerWidth * 0.65, 20, { isStatic: true, render: { visible: false }, collisionFilter: {category: 0x0002} });
+            var ground = Bodies.rectangle(x, y, w, 20, { isStatic: true, render: { visible: false }, collisionFilter: {category: 0x0002} });
             this.groundID = ground.id
             // console.log(ground.id)
 
@@ -160,7 +168,7 @@ export default {
                         // console.log('removed')
                         // console.log(this.engine.world.bodies.length)
                         if (this.engine.world.bodies.length <= 1){
-                            this.addLetters(window.innerWidth * 0.001953125)
+                            this.addLetters(this.scale)
                             // console.log('added letters')
                         }
                     }
@@ -218,6 +226,11 @@ export default {
 
     
         windowResizeHandler: function () {
+
+            this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600;
+
+
+
             this.render.canvas.width =  window.innerWidth
             this.render.canvas.height = window.innerHeight
 
@@ -225,7 +238,7 @@ export default {
                 
                 this.engine.world.bodies.forEach(body => {
                     // if (!body.isStatic){
-    
+                        
                         Matter.Composite.remove(this.engine.world, body)
                     // }
                 });
@@ -233,11 +246,21 @@ export default {
             }
 
             setTimeout(() => {
+                console.log(this.isMobile)
+                
+                this.scale = this.isMobile ? window.innerWidth * 0.0029 : window.innerWidth * 0.001953125
+                let x = this.isMobile ? (window.innerWidth) / 2 : (window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03)
+                let y = this.isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.75
+                let w = this.isMobile ? window.innerHeight : window.innerWidth * 0.65
+                // let w = 
 
-                var ground = Matter.Bodies.rectangle((window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.032), window.innerHeight - 180 , window.innerWidth * 0.65, 5, { isStatic: true, render: { visible: false } });
+
+                var ground = Matter.Bodies.rectangle(x, y, w, 20, { isStatic: true, render: { visible: false }, collisionFilter: {category: 0x0002} });
+                this.groundID = ground.id
+
                 Matter.Composite.add(this.engine.world, [ground]);
     
-                this.addLetters(window.innerWidth * 0.001953125)
+                this.addLetters(this.scale)
             }, 1)
 
             // this.$forceUpdate()
@@ -325,11 +348,27 @@ export default {
   z-index: 2;
 }
 
+@media (max-width:600px) {
+    #physics-header{
+
+       animation: 0.5s ease-out 3.5s borderAnimateMobile forwards !important;
+    }
+}
+
+
+
 @keyframes borderAnimate {
     0% {
         outline-offset: 0px;
     } 100% {
         outline-offset: -15px;
+    }
+}
+@keyframes borderAnimateMobile {
+    0% {
+        outline-offset: 0px;
+    } 100% {
+        outline-offset: -10px;
     }
 }
 

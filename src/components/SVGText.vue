@@ -93,6 +93,8 @@ export default {
             // console.log(window.innerWidth)
 
             const svg = document.querySelector('.title')
+            let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600;
+            const x = isMobile ? window.innerWidth * 0.0029 : window.innerWidth * 0.001953125
 
             // const letters = this.text.split('')
 
@@ -102,8 +104,8 @@ export default {
             // for (let i = 0; i < 5; i++) {
                 
                 
-            svg.setAttribute('width', `${this.x * 40 * window.innerWidth * 0.001953125}px`)
-            svg.setAttribute('height', `${250 * (this.y) * window.innerWidth * 0.001953125}px`)
+            svg.setAttribute('width', `${this.x * 40 * x}px`)
+            svg.setAttribute('height', `${250 * (this.y) * x}px`)
             // }
 
             // }, 100)
