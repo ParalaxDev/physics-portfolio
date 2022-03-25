@@ -8,9 +8,11 @@
 
 // import font from '../assets/roboto-mono-700.svg'
 
+
 export default {
     data() {
         return {
+            actualText: 'Im a~Front end~DEveloper'
         }
     },
     props: {
@@ -22,7 +24,16 @@ export default {
     },
     methods: {
         init() {
-            // console.log('ran')
+
+
+            // let urlParams = new URLSearchParams(window.location.search);
+            // if (urlParams.has('t')) {
+                
+            //     this.actualText = urlParams.get('t')
+            //     console.log(this.actualText)
+            // } else {
+            //     this.actualText = this.text
+            // }
 
             // var doc = null
 
@@ -36,10 +47,11 @@ export default {
                     this.x = 0
 
                     const letters = this.text.split('')
-                    // console.log(letters.length)
+                    // console.log(letters)
 
 
                     letters.forEach((letter) => {
+                        console.log(letter)
                         this.x += 1
                         if (letter == '~'){
                             this.y += 1
