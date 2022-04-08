@@ -5,25 +5,29 @@
     <!-- </div> -->
     <div class="outline" />
     <div class="noise" />
-    <svg class="spinner" v-on:click='spawnObject' width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" role="button" aria-roledescription="spawn in a physics object">
-        <g transform="matrix(1,0,0,1,-198.102,-204.305)">
-            <g transform="matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)">
-            <path d="M229.664,150.655C229.664,136.11 241.455,124.319 256,124.319C270.545,124.319 282.336,136.11 282.336,150.655L282.336,210.384L334.063,180.52C346.66,173.247 362.767,177.563 370.039,190.159C377.312,202.756 372.996,218.863 360.399,226.135L308.672,256L360.399,285.865C372.996,293.137 377.312,309.244 370.039,321.841C362.767,334.437 346.66,338.753 334.063,331.48L282.336,301.616L282.336,361.345C282.336,375.89 270.545,387.681 256,387.681C241.455,387.681 229.664,375.89 229.664,361.345L229.664,301.616L177.937,331.48C165.34,338.753 149.233,334.437 141.961,321.841C134.688,309.244 139.004,293.137 151.601,285.865L203.328,256L151.601,226.135C139.004,218.863 134.688,202.756 141.961,190.159C149.233,177.563 165.34,173.247 177.937,180.52L229.664,210.384L229.664,150.655Z" :fill='currentPrimary' />
+
+    <div id='header'>
+        <svg class="spinner" v-on:click='spawnObject' width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" role="button" aria-roledescription="spawn in a physics object">
+            <g transform="matrix(1,0,0,1,-198.102,-204.305)">
+                <g transform="matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)">
+                <path d="M229.664,150.655C229.664,136.11 241.455,124.319 256,124.319C270.545,124.319 282.336,136.11 282.336,150.655L282.336,210.384L334.063,180.52C346.66,173.247 362.767,177.563 370.039,190.159C377.312,202.756 372.996,218.863 360.399,226.135L308.672,256L360.399,285.865C372.996,293.137 377.312,309.244 370.039,321.841C362.767,334.437 346.66,338.753 334.063,331.48L282.336,301.616L282.336,361.345C282.336,375.89 270.545,387.681 256,387.681C241.455,387.681 229.664,375.89 229.664,361.345L229.664,301.616L177.937,331.48C165.34,338.753 149.233,334.437 141.961,321.841C134.688,309.244 139.004,293.137 151.601,285.865L203.328,256L151.601,226.135C139.004,218.863 134.688,202.756 141.961,190.159C149.233,177.563 165.34,173.247 177.937,180.52L229.664,210.384L229.664,150.655Z" :fill='currentPrimary' />
+                </g>
             </g>
-        </g>
-    </svg>
+        </svg>
 
-    <div class="navbar" >
-        <ul>
-            <a class='socials' href='https://github.com/paralaxdev' target="_blank"><span>Github</span></a>
-            <a class='socials' href='https://dsc.bio/paralax' target="_blank"><span>Discord</span></a>
-        </ul>
+        <div class="navbar" >
+            <ul>
+                <a class='socials' href='https://github.com/paralaxdev' target="_blank"><span>Github</span></a>
+                <a class='socials' href='https://dsc.bio/paralax' target="_blank"><span>Discord</span></a>
+            </ul>
+        </div>
+        <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
     </div>
-
-    <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
     <section id='about' >
 
     </section>
+
+    <div style="height: 250vh; width: 100vw;"/>
     
     
 
@@ -80,7 +84,8 @@ export default {
   beforeMount() {
     console.log(scrollY)
     window.onscroll = () => {
-        console.log(scrollY)
+        document.getElementById('header').style.transform = `rotate(-${scrollY / 10}deg)`
+        document.getElementById('about').style.transform = `rotate(-${(scrollY / 10) + (360 - 75)}deg)`
     }
     this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const root = document.querySelector(':root')
@@ -114,13 +119,25 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
+#header {
+
+    /* background: rgba(0, 255, 0, 0.333); */
+    height: 100vh;
+    width: 100vw;
+    transform-origin: -500px;
+    position: fixed;
+    /* position: relative;
+    top: 100vh; */
+}
 
 #about {
     background: rgba(255, 0, 0, 0.333);
     height: 100vh;
     width: 100vw;
-    position: relative;
-    top: 100vh;
+    position: fixed;
+    /* top: 100vh; */
+    transform-origin: -500px;
+    transform: rotate(75deg);
 }
 
 .outline {
@@ -146,12 +163,12 @@ export default {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
 }
 
 body {
-    overflow: visible;
+    /* overflow: visible; */
     
     
     background: var(--secondary-color);
