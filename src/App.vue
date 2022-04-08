@@ -24,7 +24,9 @@
         <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
     </div>
     <section id='about' >
-
+        <img class='thumbnail' src="assets/thumbnails/kew-bag.png" />
+        <h1>KEW GARDENS</h1>
+        <h3>GCSE PROJECT</h3>
     </section>
 
     <div style="height: 250vh; width: 100vw;"/>
@@ -54,6 +56,7 @@ export default {
       currentPrimary: '#000',
       currentSecondary: '#000',
       width: 1,
+      publicPath: process.env.BASE_URL
     }
   },
   methods: {
@@ -85,7 +88,19 @@ export default {
     console.log(scrollY)
     window.onscroll = () => {
         document.getElementById('header').style.transform = `rotate(-${scrollY / 10}deg)`
-        document.getElementById('about').style.transform = `rotate(-${(scrollY / 10) + (360 - 75)}deg)`
+        const x = (scrollY / 10) + (360 - 75)
+        // if (x >= 350 && x <= 360) {
+            
+        //     window.scrollTo({
+        //     top: 750,
+        //     left: 0,
+        //     behavior: 'smooth'
+        //     });
+        // }
+        document.getElementById('about').style.transform = `rotate(-${x}deg)`
+        console.log(scrollY)
+
+
     }
     this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const root = document.querySelector(':root')
@@ -131,13 +146,24 @@ export default {
 }
 
 #about {
-    background: rgba(255, 0, 0, 0.333);
+    /* background: rgba(255, 0, 0, 0.333); */
     height: 100vh;
     width: 100vw;
     position: fixed;
     /* top: 100vh; */
     transform-origin: -500px;
     transform: rotate(75deg);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+
+.thumbnail {
+    height: 50%;
+    outline: 15px solid var(--primary-color);
+    margin-left: 75px;
 }
 
 .outline {
@@ -177,6 +203,7 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+
 
 
 #loader {
