@@ -3,6 +3,7 @@
     <!-- <div id='loader'> -->
         
     <!-- </div> -->
+    <div class="outline" />
     <div class="noise" />
     <svg class="spinner" v-on:click='spawnObject' width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" role="button" aria-roledescription="spawn in a physics object">
         <g transform="matrix(1,0,0,1,-198.102,-204.305)">
@@ -14,12 +15,15 @@
 
     <div class="navbar" >
         <ul>
-            <a class='socials' href='https://github.com/paralaxdev'><span>Github</span></a>
-            <a class='socials' href='https://dsc.bio/paralax'><span>Discord</span></a>
+            <a class='socials' href='https://github.com/paralaxdev' target="_blank"><span>Github</span></a>
+            <a class='socials' href='https://dsc.bio/paralax' target="_blank"><span>Discord</span></a>
         </ul>
     </div>
 
     <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
+    <section id='about' >
+
+    </section>
     
     
 
@@ -74,6 +78,10 @@ export default {
       }
   },
   beforeMount() {
+    console.log(scrollY)
+    window.onscroll = () => {
+        console.log(scrollY)
+    }
     this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const root = document.querySelector(':root')
     // const favicon = document.getElementById("favicon");
@@ -106,18 +114,23 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
-/* :root {
-      --secondary-color: #D3D0CB;
-      --primary-color: #393E41;
+
+#about {
+    background: rgba(255, 0, 0, 0.333);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    top: 100vh;
 }
 
-@media (prefers-color-scheme: dark){
-    :root {
-      --primary-color: #D3D0CB;
-      --secondary-color: #393E41;
-    }
-
-} */
+.outline {
+    outline: 30px solid var(--primary-color);
+    /* outline-offset: -15px; */
+    animation: 0.5s ease-out 3.5s borderAnimate forwards;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
 
 
 * {
@@ -133,14 +146,21 @@ export default {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 body {
-    overflow: hidden;
+    overflow: visible;
     
     
     background: var(--secondary-color);
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 #loader {
     background: var(--secondary-color);
@@ -189,6 +209,14 @@ body {
 
     /* transition: 1s; */
 
+}
+
+@keyframes borderAnimate {
+    0% {
+        outline-offset: 0px;
+    } 100% {
+        outline-offset: -15px;
+    }
 }
 
 @keyframes spin {
@@ -278,7 +306,7 @@ body {
     /* left: 0; */
     border-top: 3px dotted var(--primary-color);
     top: -1.2rem;
-    pointer-events: none;
+    /* pointer-events: none; */
     display: inline-block;
 }
 

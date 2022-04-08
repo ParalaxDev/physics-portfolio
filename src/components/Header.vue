@@ -143,6 +143,8 @@ export default {
                     }
                 }
             });
+            mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
+            mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
 
             // console.log(this.engine.world)
 
@@ -326,9 +328,9 @@ export default {
 #physics-header {
     position: absolute;
     /* box-sizing: border-box; */
-    outline: 30px solid var(--primary-color);
+    /* outline: 30px solid var(--primary-color); */
     /* outline-offset: -15px; */
-    animation: 0.5s ease-out 3.5s borderAnimate forwards;
+    /* animation: 0.5s ease-out 3.5s borderAnimate forwards; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -343,7 +345,7 @@ export default {
   height: auto;
   
   opacity: 0;
-  pointer-events: none;
+  /* pointer-events: none; */
   transform: translate3d(-5%, -100%, 0);
   z-index: 2;
 }
