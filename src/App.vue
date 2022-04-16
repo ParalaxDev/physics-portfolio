@@ -96,8 +96,9 @@ export default {
         //     behavior: 'smooth'
         //     });
         // }
-        document.getElementById('kew-gardens').style.transform = `rotate(-${x}deg)`
-        document.getElementById('dr-barkers').style.transform = `rotate(-${x + 110}deg)`
+        const y = 130 - 90
+        document.getElementById('kew-gardens').style.transform = `rotate(-${x + y}deg)`
+        document.getElementById('dr-barkers').style.transform = `rotate(-${x - 120 + y}deg)`
         console.log(scrollY)
 
 

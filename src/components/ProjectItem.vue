@@ -23,12 +23,12 @@ export default {
 
 <style scoped>
 .project-item {
-    background: rgba(255, 0, 0, 0.333);
+    /* background: rgba(255, 0, 0, 0.333); */
     height: 100vh;
     width: 100vw;
     position: fixed;
     /* top: 100vh; */
-    transform-origin: 100vw;
+    transform-origin: 105vw;
     transform: rotate(160deg);
     display: flex;
     justify-content: center;
@@ -43,6 +43,8 @@ export default {
     /* height: calc(50% + 30px); */
     width: 30%;
     padding: 0;
+    margin-right: 50px;
+    
     /* flex: 0 0 100%; */
 }
 
@@ -61,6 +63,7 @@ h3 {
     height: 30%;
     width: 30%;
     outline: 7.5px solid var(--primary-color);
+    margin-right: 50px;
     /* margin-right: 50px; */
 }
 </style>
