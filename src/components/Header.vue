@@ -19,7 +19,7 @@ export default {
         return {
             groundID: 1,
             isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600,
-            scale: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600 ? window.innerWidth * 0.0029 : window.innerWidth * 0.001953125
+            scale: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 600 ? window.innerWidth * 0.0029 : window.innerWidth * 0.0019
         }
     },
     props: {
@@ -250,7 +250,7 @@ export default {
             setTimeout(() => {
                 console.log(this.isMobile)
                 
-                this.scale = this.isMobile ? window.innerWidth * 0.0029 : window.innerWidth * 0.001953125
+                this.scale = this.isMobile ? window.innerWidth * 0.0029 : window.innerWidth * 0.0019
                 let x = this.isMobile ? (window.innerWidth) / 2 : (window.innerWidth * 0.65) / 2  + (window.innerWidth * 0.03)
                 let y = this.isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.75
                 let w = this.isMobile ? window.innerHeight : window.innerWidth * 0.65

@@ -23,13 +23,10 @@
         </div>
         <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
     </div>
-    <section id='about' >
-        <img class='thumbnail' src="assets/thumbnails/kew-bag.png" />
-        <h1>KEW GARDENS</h1>
-        <h3>GCSE PROJECT</h3>
-    </section>
+    <ProjectItem id='kew-gardens' title='Kew Gardens' description='GCSE Graphics Project' img='kew-bag' />
+    <ProjectItem id='dr-barkers' title='Dr Barkers' description='GCSE Graphics Project' img='dr-barkers' />
 
-    <div style="height: 250vh; width: 100vw;"/>
+    <div style="height: 1000vh; width: 100vw;"/>
     
     
 
@@ -38,6 +35,7 @@
 
 <script>
 import Header from './components/Header.vue'
+import ProjectItem from './components/ProjectItem.vue'
 
 // import img from '../assets/theme-switcher.svg'
 // import SVGText from './components/SVGText.vue'
@@ -45,8 +43,9 @@ import Header from './components/Header.vue'
 export default {
   name: 'App',
   components: {
-    Header, 
-    // SVGText
+    Header,
+    ProjectItem,
+
   },
   data(){
     return {
@@ -87,8 +86,8 @@ export default {
   beforeMount() {
     console.log(scrollY)
     window.onscroll = () => {
-        document.getElementById('header').style.transform = `rotate(-${scrollY / 10}deg)`
-        const x = (scrollY / 10) + (360 - 75)
+        // document.getElementById('header').style.transform = `rotate(-${scrollY / 10}deg)`
+        const x = (scrollY / 10) + (180 + 20)
         // if (x >= 350 && x <= 360) {
             
         //     window.scrollTo({
@@ -97,7 +96,8 @@ export default {
         //     behavior: 'smooth'
         //     });
         // }
-        document.getElementById('about').style.transform = `rotate(-${x}deg)`
+        document.getElementById('kew-gardens').style.transform = `rotate(-${x}deg)`
+        document.getElementById('dr-barkers').style.transform = `rotate(-${x + 110}deg)`
         console.log(scrollY)
 
 
@@ -139,32 +139,13 @@ export default {
     /* background: rgba(0, 255, 0, 0.333); */
     height: 100vh;
     width: 100vw;
-    transform-origin: -500px;
+    /* transform-origin: 110vw; */
     position: fixed;
     /* position: relative;
     top: 100vh; */
 }
 
-#about {
-    /* background: rgba(255, 0, 0, 0.333); */
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    /* top: 100vh; */
-    transform-origin: -500px;
-    transform: rotate(75deg);
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
 
-}
-
-
-.thumbnail {
-    height: 50%;
-    outline: 15px solid var(--primary-color);
-    margin-left: 75px;
-}
 
 .outline {
     outline: 30px solid var(--primary-color);
