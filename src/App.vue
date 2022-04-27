@@ -26,12 +26,8 @@
             <div class="box">
                 <h3>> About Me</h3>
                 <img style='width:150px; padding: 10px' align='right' src='https://avatars.githubusercontent.com/u/42569560'/>
-                <p>Hi, I'm Will Baker, a GCSE Graphic Design student with a love for programming. I first started tinkering with Scratch and Python, but quickly began to fall in love with web development. I have since expanded my HTML knowledge by learning React, Vue, Nuxt, Next JS, SCSS and Wordpress. As well as this, I have since learnt Go, C# and NodeJS to help further my knowledge.</p>
+                <p>Hi, I'm Will Baker, a GCSE Graphic Design student with a love for programming. I first started tinkering with Scratch and Python, but quickly discovered Web Development. I have since expanded my HTML knowledge by learning React, Vue, Nuxt, Next JS, SCSS and Wordpress, allowing me to create responsive and interactive websites and UI. As well as this, I have also learnt Go, C# and NodeJS to help further my programming ability, and allowing me to create functional backends.</p>
             </div>
-            <!-- <div class="box">
-                <h3>> Current Languages</h3>
-                <p>I started with Dreamweaver, played with Flash and ActionScript, did back end dev from scratch, worked with all kind of CMS, focused on creative dev, worked on 123+ projects , ran Waaark studio, won a few awards , and keep learning. </p>
-            </div> -->
             <div class="box">
                 <h3>> My Work</h3>
                 <p>My GCSE Graphics Projects:</p>
@@ -209,6 +205,7 @@ export default {
 }
 .box ul {
     padding: 5px 15px;
+    list-style-type: " - ";
 }
 
 .box ul a {
@@ -216,6 +213,16 @@ export default {
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
     transition: 0.5s;
+}
+.box ul li {
+    transition: 0.5s;
+}
+
+.box ul li:hover {
+
+    transform: translateX(10px);
+    /* list-style-type: " - "; */
+
 }
 
 
