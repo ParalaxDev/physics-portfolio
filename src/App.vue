@@ -1,32 +1,55 @@
 <template>
 
     <!-- <div id='loader'> -->
-        
-    <!-- </div> -->
-    <div class="outline" />
-    <div class="noise" />
+    <!-- <div id='scrollable'> -->
+        <div class="outline" />
+        <!-- <div class="noise" /> -->
 
-    <div id='header'>
-        <svg class="spinner" v-on:click='spawnObject' width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" role="button" aria-roledescription="spawn in a physics object">
-            <g transform="matrix(1,0,0,1,-198.102,-204.305)">
-                <g transform="matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)">
-                <path d="M229.664,150.655C229.664,136.11 241.455,124.319 256,124.319C270.545,124.319 282.336,136.11 282.336,150.655L282.336,210.384L334.063,180.52C346.66,173.247 362.767,177.563 370.039,190.159C377.312,202.756 372.996,218.863 360.399,226.135L308.672,256L360.399,285.865C372.996,293.137 377.312,309.244 370.039,321.841C362.767,334.437 346.66,338.753 334.063,331.48L282.336,301.616L282.336,361.345C282.336,375.89 270.545,387.681 256,387.681C241.455,387.681 229.664,375.89 229.664,361.345L229.664,301.616L177.937,331.48C165.34,338.753 149.233,334.437 141.961,321.841C134.688,309.244 139.004,293.137 151.601,285.865L203.328,256L151.601,226.135C139.004,218.863 134.688,202.756 141.961,190.159C149.233,177.563 165.34,173.247 177.937,180.52L229.664,210.384L229.664,150.655Z" :fill='currentPrimary' />
+        <div id='header'>
+            <svg class="spinner" v-on:click='spawnObject' width="32px" height="32px" viewBox="0 0 116 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" role="button" aria-roledescription="spawn in a physics object">
+                <g transform="matrix(1,0,0,1,-198.102,-204.305)">
+                    <g transform="matrix(2.69229e-17,-0.439684,0.439684,2.69229e-17,143.441,368.559)">
+                    <path d="M229.664,150.655C229.664,136.11 241.455,124.319 256,124.319C270.545,124.319 282.336,136.11 282.336,150.655L282.336,210.384L334.063,180.52C346.66,173.247 362.767,177.563 370.039,190.159C377.312,202.756 372.996,218.863 360.399,226.135L308.672,256L360.399,285.865C372.996,293.137 377.312,309.244 370.039,321.841C362.767,334.437 346.66,338.753 334.063,331.48L282.336,301.616L282.336,361.345C282.336,375.89 270.545,387.681 256,387.681C241.455,387.681 229.664,375.89 229.664,361.345L229.664,301.616L177.937,331.48C165.34,338.753 149.233,334.437 141.961,321.841C134.688,309.244 139.004,293.137 151.601,285.865L203.328,256L151.601,226.135C139.004,218.863 134.688,202.756 141.961,190.159C149.233,177.563 165.34,173.247 177.937,180.52L229.664,210.384L229.664,150.655Z" :fill='currentPrimary' />
+                    </g>
                 </g>
-            </g>
-        </svg>
+            </svg>
 
-        <div class="navbar" >
-            <ul>
-                <a class='socials' href='https://github.com/paralaxdev' target="_blank"><span>Github</span></a>
-                <a class='socials' href='https://dsc.bio/paralax' target="_blank"><span>Discord</span></a>
-            </ul>
+            <div class="navbar" >
+                <ul>
+                    <a class='socials' href='https://github.com/paralaxdev' target="_blank"><span>Github</span></a>
+                    <a class='socials' href='https://dsc.bio/paralax' target="_blank"><span>Discord</span></a>
+                </ul>
+            </div>
+            <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
         </div>
-        <Header :primary='currentPrimary' :secondary="currentSecondary" ref='header' aria-roledescription="physics based header"/>
-    </div>
-    <ProjectItem id='kew-gardens' title='Kew Gardens' description='GCSE Graphics Project' img='kew-bag' />
-    <ProjectItem id='dr-barkers' title='Dr Barkers' description='GCSE Graphics Project' img='dr-barkers' />
+        <div id='box-stack'>
+            <div class="box">
+                <h3>> About Me</h3>
+                <p>Hi, I'm Will Baker, a GCSE Graphic Design student with a love for programming. I first started tinkering with Scratch and Python, but quickly began to fall in love with web development. I have since expanded my HTML knowledge by learning React, Vue, Nuxt, Next JS, SCSS and Wordpress. As well as this, I have since learnt Go, C# and NodeJS to help further my knowledge.</p>
+            </div>
+            <!-- <div class="box">
+                <h3>> Current Languages</h3>
+                <p>I started with Dreamweaver, played with Flash and ActionScript, did back end dev from scratch, worked with all kind of CMS, focused on creative dev, worked on 123+ projects , ran Waaark studio, won a few awards , and keep learning. </p>
+            </div> -->
+            <div class="box">
+                <h3>> My Work</h3>
+                <p>My GCSE Graphics Projects:</p>
+                <ul>
+                    <li><a href='https://graphics.paralax.xyz/projects/kew'>Kew Gardens</a></li>
+                    <li><a href='https://graphics.paralax.xyz/projects/drbarkers'>Dr Barkers</a></li>
+                    <li><a href='https://graphics.paralax.xyz/projects/typography'>Typography Workshop</a></li>
+                </ul>
+                <p>My Programming Projects:</p>
+                <ul>
+                    <li><a href='https://github.com/paralaxdev/paralax-xyz'>Paralax.xyz</a></li>
+                </ul>
+            </div>
+            <!-- <div style='height: 100vh'/> -->
+        </div>
 
-    <div style="height: 1000vh; width: 100vw;"/>
+
+    <!-- </div> -->
+    <!-- </div> -->
     
     
 
@@ -35,7 +58,8 @@
 
 <script>
 import Header from './components/Header.vue'
-import ProjectItem from './components/ProjectItem.vue'
+import Scrollbar from 'smooth-scrollbar'
+
 
 // import img from '../assets/theme-switcher.svg'
 // import SVGText from './components/SVGText.vue'
@@ -44,7 +68,6 @@ export default {
   name: 'App',
   components: {
     Header,
-    ProjectItem,
 
   },
   data(){
@@ -52,6 +75,8 @@ export default {
       themeSwitcher: require('./assets/theme-switcher.svg'),
       PRIMARY: '#000D59 ',
       SECONDARY: '#f4b41a',
+    //   PRIMARY: '#7a30cf',
+    //   SECONDARY: '#7ad9c4',
       currentPrimary: '#000',
       currentSecondary: '#000',
       width: 1,
@@ -85,24 +110,6 @@ export default {
   },
   beforeMount() {
     console.log(scrollY)
-    window.onscroll = () => {
-        // document.getElementById('header').style.transform = `rotate(-${scrollY / 10}deg)`
-        const x = (scrollY / 10) + (180 + 20)
-        // if (x >= 350 && x <= 360) {
-            
-        //     window.scrollTo({
-        //     top: 750,
-        //     left: 0,
-        //     behavior: 'smooth'
-        //     });
-        // }
-        const y = 130 - 90
-        document.getElementById('kew-gardens').style.transform = `rotate(-${x + y}deg)`
-        document.getElementById('dr-barkers').style.transform = `rotate(-${x - 120 + y}deg)`
-        console.log(scrollY)
-
-
-    }
     this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const root = document.querySelector(':root')
     // const favicon = document.getElementById("favicon");
@@ -128,6 +135,19 @@ export default {
     // console.log(document.readyState)
 
   },
+  mounted() {
+    Scrollbar.init(document.querySelector('#scrollable'), {
+        damping: 0.1,
+        thumbMinSize: 20,
+        renderByPixels: true,
+        // continuousScrolling: true,
+    });
+
+    // scrollbar.addListener(({ offset }) => {  
+    //     // fixed.style.top = offset.y + 'px';
+    //     // fixed.style.left = offset.x + 'px';
+    // });
+  }
  
 }
 </script>
@@ -135,13 +155,75 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
+
+#box-stack {
+    padding: 0px calc(75px - 25px);
+    display: flex;
+    
+    justify-content: space-evenly;
+    /* height: 100vh; */
+}
+
+.box {
+    /* height: 200px; */
+    background: white;
+    padding: 15px;
+    margin: 0px 25px;
+    margin-top: 10px;
+    margin-bottom: 75px;
+    outline: 10px solid var(--primary-color);
+    flex-basis: 30%;
+    flex-grow: 1;
+}
+
+@media (max-width:940px) {
+
+    #box-stack {
+        flex-wrap: wrap;
+    }
+
+    .box {
+       flex-basis: 80%; 
+    }
+}
+
+@media (width:600px) {
+
+    #box-stack {
+        flex-wrap: wrap;
+    }
+
+    .box {
+       flex-basis: 80%; 
+    }
+}
+
+
+.box h3 {
+    font-size: 1.5rem;
+}
+.box p {
+    padding: 5px 0px;
+}
+.box ul {
+    padding: 5px 15px;
+}
+
+.box ul a {
+    /* padding-top: 1px; */
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
+    transition: 0.5s;
+}
+
+
 #header {
 
     /* background: rgba(0, 255, 0, 0.333); */
     height: 100vh;
     width: 100vw;
     /* transform-origin: 110vw; */
-    position: fixed;
+    /* position: fixed; */
     /* position: relative;
     top: 100vh; */
 }
@@ -155,6 +237,7 @@ export default {
     width: 100vw;
     height: 100vh;
     position: fixed;
+    pointer-events: none;
 }
 
 
