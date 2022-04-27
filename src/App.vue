@@ -41,7 +41,8 @@
                 </ul>
                 <p>My Programming Projects:</p>
                 <ul>
-                    <li><a href='https://github.com/paralaxdev/paralax-xyz'>Paralax.xyz</a></li>
+                    <li><a href='https://github.com/paralaxdev/physics-portfolio'>paralax.xyz</a></li>
+                    <li><a href='https://github.com/paralaxdev/paralax-xyz'>graphics.paralax.xyz</a></li>
                 </ul>
             </div>
             <!-- <div style='height: 100vh'/> -->
