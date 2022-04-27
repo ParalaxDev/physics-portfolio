@@ -51,7 +51,7 @@ export default {
 
 
                     letters.forEach((letter) => {
-                        console.log(letter)
+                        // console.log(letter)
                         this.x += 1
                         if (letter == '~'){
                             this.y += 1

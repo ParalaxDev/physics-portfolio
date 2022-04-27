@@ -25,6 +25,7 @@
         <div id='box-stack'>
             <div class="box">
                 <h3>> About Me</h3>
+                <img style='width:150px; padding: 10px' align='right' src='https://avatars.githubusercontent.com/u/42569560'/>
                 <p>Hi, I'm Will Baker, a GCSE Graphic Design student with a love for programming. I first started tinkering with Scratch and Python, but quickly began to fall in love with web development. I have since expanded my HTML knowledge by learning React, Vue, Nuxt, Next JS, SCSS and Wordpress. As well as this, I have since learnt Go, C# and NodeJS to help further my knowledge.</p>
             </div>
             <!-- <div class="box">
@@ -59,7 +60,7 @@
 
 <script>
 import Header from './components/Header.vue'
-import Scrollbar from 'smooth-scrollbar'
+// import Scrollbar from 'smooth-scrollbar'
 
 
 // import img from '../assets/theme-switcher.svg'
@@ -110,7 +111,7 @@ export default {
       }
   },
   beforeMount() {
-    console.log(scrollY)
+    // console.log(scrollY)
     this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const root = document.querySelector(':root')
     // const favicon = document.getElementById("favicon");
@@ -137,12 +138,12 @@ export default {
 
   },
   mounted() {
-    Scrollbar.init(document.querySelector('#scrollable'), {
-        damping: 0.1,
-        thumbMinSize: 20,
-        renderByPixels: true,
-        // continuousScrolling: true,
-    });
+    // Scrollbar.init(document.querySelector('#scrollable'), {
+    //     damping: 0.1,
+    //     thumbMinSize: 20,
+    //     renderByPixels: true,
+    //     // continuousScrolling: true,
+    // });
 
     // scrollbar.addListener(({ offset }) => {  
     //     // fixed.style.top = offset.y + 'px';
